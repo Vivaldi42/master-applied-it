@@ -1,3 +1,3 @@
 # Research mind map
 
--[[pipeline]]
+- [[pipeline|Pipeline]]
