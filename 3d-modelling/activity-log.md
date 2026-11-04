@@ -1,0 +1,10 @@
+# Activity log
+
+## 02-11-2026
+
+- Reviewed the teacher feedback. Main point: start from the maintenance problem and requirements, not from the available technology.
+- Research questions need revision: the main question is broader than the scope and subquestions 1 and 3 overlap. Condition assessment (NEN 2767) moves to future work.
+- Direction: a generic core (capture, 3D reconstruction, object recognition and location) evaluated with Heijmans as the primary case.
+- Requirements so far: fast model creation (needs a measurable time limit), maximum deviation of 10-15 cm (define what is measured: room geometry or object position) and on-premise processing as a constraint. "Evaluate devices and algorithms" belongs in the methodology, not in the requirements.
+- Test object: any home or office object. Record object size and appearance as variables that affect the results.
+- Data modality (RGB, RGB + IMU or RGB + depth) determines the applicable methods and benchmarks. Candidate benchmarks: ScanNet++ and ARKitScenes. Metrics: accuracy, completeness, Chamfer distance, F-score and ATE.
