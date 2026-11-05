@@ -9,5 +9,6 @@ https://www.tensorway.com/post/3d-reconstruction-room-planning
 - [[3d-scanning|3D Scanning]]
 - [[apple-roomplan-api|Apple RoomPlan API]]
 - [[robotics|Robotics]]
-- [[background-research-contents|Backgeound research contents]]
+- [[background-research-contents|Background research contents]]
+-[[problem-analysis|Problem analysis]]
 
