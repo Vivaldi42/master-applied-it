@@ -16,11 +16,11 @@ The condition assessment follows NEN 2767, the Dutch standard for inventory and 
 
 ## 4. Problems
 
-The handed-over records provided by the previous maintainer are frequently incomplete or outdated. If a list is not updated thoroughly over time, it deviates more and more from reality. Data quality differs per project but is usually low. Keeping the list up to date is a common struggle across the entire industry.
+- The handed-over records provided by the previous maintainer are frequently incomplete or outdated. If a list is not updated thoroughly over time, it deviates more and more from reality. Data quality differs per project but is usually low. Keeping the list up to date is a common struggle across the entire industry.
 
-The inspection itself is difficult and time consuming. Depending on the building, it takes days or even weeks and requires considerable manpower.
+- The inspection itself is difficult and time consuming. Depending on the building, it takes days or even weeks and requires considerable manpower.
 
-Low data quality also affects other work. Heijmans develops solutions that perform data-driven tasks on top of the asset data. These solutions are currently based on incorrect or incomplete data.
+- Heijmans also develops solutions that perform data-driven tasks on top of the asset data. These solutions require high-quality data, so incorrect or incomplete records limit their usefulness.
 
 ## 5. Current mitigation
 
@@ -28,18 +28,8 @@ Heijmans experiments with different technologies to improve data quality. One ap
 
 ## 6. Project goal
 
-This project focuses on wearables and on the point of view of a person who walks through the building and collects the data. The solution adds value if it reduces the time required for the inspection or improves the quality of the data. An example target is that one person walks through a building in one day and a 3D model is created from the collected data.
-
-## 7. Requirements and scope
+This project focuses on AI wearables used by a person who walks through the building to collect the data, which is then converted to a 3D model. The solution adds value if it reduces the time required for the inspection or improves the quality of the data.
 
 The required output is an asset list that is as correct as possible. For maintenance, it is sufficient to know which assets are present in each room and on which floor. Centimeter-level accuracy is not required; location accuracy of 10 to 15 cm is sufficient.
 
-Because the condition assessment is visual, a camera can in principle capture everything an inspector sees. The project will test the approach on one specific asset type.
-
-## 9. Adoption risk
-
-Inspectors may resist the new solution. To address this, the project needs to show that the solution is valuable to the inspectors themselves: it reduces the time and effort spent on a task they do not enjoy, so they can focus on work they find more meaningful.
-
-## Open points
-
-- Which asset type the project will test.
+Because the condition assessment is visual, a camera can in principle capture everything an inspector sees. 
