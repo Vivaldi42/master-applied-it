@@ -1,3 +1,6 @@
+<!-- Command to convert to PDF -->
+<!-- pandoc problem-analysis.md -o problem-analysis.pdf --pdf-engine=xelatex -V geometry:margin=2.5cm -->
+
 # Problem analysis
 
 ## 1. Industry context
