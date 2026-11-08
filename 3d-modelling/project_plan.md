@@ -2,11 +2,7 @@
 
 ## 1. Context
 
-Heijmans needs reliable building information before starting a maintenance contract. This includes:
-
-- Which assets are present.
-- Their location within the building.
-- Their condition.
+Heijmans needs reliable building information before starting a maintenance contract. This includes which assets are present, their location within the building and their condition.
 
 At contract handover, the previous maintainer provides an asset inventory list, often through Excel sheets and sometimes annotated floor plans. After the handover, Heijmans performs a new building inspection visually, comparing the new information with the records from the previous maintainer. These records are frequently incomplete or outdated. The process of visual inspection consists of noting down every asset in the building and its condition and can take days or even weeks. 
 
@@ -39,16 +35,15 @@ The research aims to:
 
 ## 4. Research Questions
 
-**Main research question:**
+**Main research question:** 
 
-How can 3D world models and robotics algorithms support more efficient building maintenance?
+How can a 3D model of indoor space be developed to support building inventory inspection based on visual input?
 
 **Subquestions:**
-
-1. How can 3D reconstruction of indoor space be developed to support maintenance based on visual input? What metrics are suitable to compare different methods?
-2. How can assets and their conditions be identified in the 3D reconstruction?
-3. What evaluation framework is suitable to compare different methods?
-
+1. Which metrics evaluate methods for generating a 3D model?
+2. What methods exist and how do they compare on these metrics in literature?
+3. How do the selected methods perform in experiments and which factors affect the results?
+4. (possibly later) How can assets of one type and their condition be identified in the 3D model?
 
 ## 5. Expected Business and Technical Outcomes
 
@@ -83,6 +78,13 @@ The capture device could be a smartphone, Meta smart glasses or another camera. 
 - Agree on permission and conditions for recording at the selected building.
 - Minimize capture of identifiable people and sensitive building information. Exclude or anonymize such content where necessary.
 - Follow GDPR practises.
+
+## 9. Risks
+
+## 9. Adoption risk
+
+- Inspectors may resist the new solution. To address this, the project needs to show that the solution is valuable to the inspectors themselves: it reduces the time and effort spent on a task they do not enjoy, so they can focus on work they find more meaningful.
+
 
 ## 9. Planning
 
