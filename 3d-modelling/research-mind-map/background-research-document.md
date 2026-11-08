@@ -2,25 +2,15 @@
 
 ## Introduction
 
-### Story
-1. Domain: maintenance needs reliable asset data, but in existing buildings this data is poor and BIM is mostly absent. Creating models of existing buildings is manual and costly. Cameras are a cheap alternative to laser scanners but have traditionally been less accurate. Due to the technological advances in the last years theoretically higher accuracy could be achived (the main research gap).
-2. Problem: Heijmans receives incomplete asset lists at contract handover and must inspect buildings manually, which takes days to weeks.
-3. Goal and RQs: a wearable camera walkthrough produces a 3D model and an asset list. The RQs ask how to evaluate, select and test methods for this purpose.
-
 ### 1. Domain
 - Building maintenance requires data on installed components and equipment, including their exact location [1, Sec. 1].
-    - Quote: "detailed data on installed components and equipment is needed such as [...] geometries and exact location [...] as well as maintenance history since completion"
-- In many existing buildings this information is incomplete or outdated [1, Sec. 1].
-    - Quote: "In many existing buildings, incomplete, obsolete or fragmented building information is predominating"
+- In many existing buildings this information is incomplete, obsolete, or fragmented [1, Sec. 1].
 - Most existing buildings are not maintained with BIM [1].
-    - Quote: "the majority of existing buildings is not maintained, refurbished or deconstructed with BIM yet"
 - Creating a model of an existing building from captured data (scan-to-BIM) is costly and mainly manual [1, Sec. 2], [2].
-    - Quote [1]: "costly and mainly manual reverse engineering processes ('points-to-BIM', 'scan-to-BIM')"
-    - Quote [2]: "traditional Scan-to-Building Information Modelling (Sc2BIM) workflows remain time-consuming and require many resources"
-- Camera-based reconstruction has traditionally been cheaper but less accurate than laser scanning [3, Sec. 2.2.2]. Whether this still holds for recent methods is investigated in SQ2 and SQ3.
-    - Quote: "Cameras are cheap, easy to use, and offer fast data acquisition. On the other hand, one of its main issues is the reduced accuracy of photogrammetry when compared to laser scanners."
+- Camera-based reconstruction has traditionally been cheaper but less accurate than laser scanning [3, Sec. 2.2.2].
+- Recent technological advances may allow camera-based reconstruction to reach higher accuracy. This is the main research gap.
 
-### 2. Problem (source: problem-analysis.md)
+### 2. Problem
 - Heijmans maintains large buildings (e.g., offices, hospitals, educational institutions, and airports) under fixed-term contracts.
 - Most of these buildings are older and have no BIM.
 - At contract handover the previous maintainer provides an asset list (Excel, sometimes annotated floor plans). These records are often incomplete or outdated.
@@ -32,14 +22,14 @@
 - Requirements from stakeholders:
     - 3D model: location accuracy of 10 to 15 cm.
     - Asset list: floor and room per asset, as complete and correct as possible.
-    - Data processing on premise is preferred (secret projects).
+    - Data processing on premise is preferred (esp. relevant for secret projects).
 - Gap that motivates SQ1: no standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].
 - **Main research question:** How can a 3D model of indoor space be developed to support building inventory inspection based on visual input?
 - subquestions:
-    - Which metrics evaluate methods for generating a 3D model?
-    - What methods exist and how do they compare on these metrics in literature?
-    - How do the selected methods perform in experiments and which factors affect the results?
-    - (possibly later) How can assets of one type and their condition be identified in the 3D model?
+    - SQ1. Which metrics evaluate methods for generating a 3D model?
+    - SQ2. What methods exist and how do they compare on these metrics in literature?
+    - SQ3. How do the selected methods perform in experiments and which factors affect the results?
+    - (possibly later) SQ4. How can assets of one type and their condition be identified in the 3D model?
 
 ## Background/Related work
 
@@ -53,11 +43,9 @@
     - (a) a measured 3D model of the building (the goal of this project).
     - (b) learned or generative world models, which can be used as a means to reach (a).
     - Measured vs. generated content: generated parts may look plausible without being correct, which matters for the accuracy requirement.
-- Figure: overview of representations?
 
 ### 2. Reconstruction pipeline
 - Capture, camera poses and geometry, 3D representation, semantics, asset list or BIM.
-- Figure: pipeline diagram with the stages.
 
 ### 3. Method families per pipeline stage
 - Photogrammetry: structure from motion (SfM) and multi-view stereo (MVS).
@@ -71,17 +59,17 @@
 - Which assumptions remain valid and which do not.
 
 ### 5. Available hardware for testing
-May move to the methods section of the final paper.
-- Capture devices (specifications: TODO, from manufacturer data sheets):
+Methods section of the final paper.
+- Capture devices (specifications from datasheets: TODO):
 
 | Device | Type | Provided by |
 |---|---|---|
-| Samsung Galaxy S25 | Smartphone | TODO |
+| Samsung Galaxy S25 | Smartphone | personal device |
 | Ray-Ban Meta glasses Gen 2 (Wayfarer) | Smart glasses | Heijmans |
-| DJI Osmo Pocket 3 | Handheld gimbal camera | TODO |
-| GoPro Fusion | 360° camera | TODO |
-| Ricoh Theta S | 360° camera | TODO |
 | Insta360 X6 | 360° camera | Heijmans |
+| DJI Osmo Pocket 3 | Handheld gimbal camera | ISSD |
+| GoPro Fusion | 360° camera | ISSD |
+| Ricoh Theta S | 360° camera | ISSD |
 
 - Computing hardware:
 
@@ -112,21 +100,21 @@ May move to the methods section of the final paper.
 # Research process
 This research uses the following ICT research methods from the DOT framework [5]:
 
-| Method | DOT strategy |
-|---|---|
-| Expert interview (Heijmans; Fontys ICT Game Design and Video Production) | Library |
-| Problem analysis | Field |
-| Literature study | Library |
-| Available product analysis | Library |
-| Benchmark test | Showroom |
-| Decomposition | Workshop |
-| Prototyping | Workshop |
-| Requirements prioritization | Workshop |
+| Method | DOT strategy | Activity |
+|---|---|---|
+| Expert interview | Library | Heijmans stakeholders were interviewed about the maintenance process and its problems. An interview was conducted also with a maintenance expert. Fontys ICT Game Design and Video Production experts were interviewed about 3D reconstruction of physical spaces used for gaming and video production. |
+| Problem analysis | Field | The interview results were documented in a problem analysis, which was discussed with and approved by the stakeholders. |
+| Literature study | Library | Review papers on BIM for existing buildings, scan-to-BIM, and condition assessment were studied to describe the domain and the research gap. |
+| Available product analysis | Library | Existing reconstruction software and commercial capture products were reviewed for their output, licence, and hardware requirements. |
+| Benchmark test | Showroom | [TODO] Selected methods are compared on the same captured data using the metrics from SQ1. |
+| Decomposition | Workshop | [TODO] The reconstruction process was decomposed into pipeline stages (capture, localisation, geometry, semantics, BIM) to compare methods per stage. |
+| Prototyping | Workshop | [TODO] A prototype was built to investigate what different algorithms can do using Samsung Galaxy S25 video. |
+| Requirements prioritization | Workshop | [TODO] |
 
 ## Conclusion
 - What is known: summary of the method families and their reported performance.
 - What is missing: the research gap.
-- How each SQ addresses the gap.
+- how each SQ addresses the gap.
 
 ## References
 [1] R. Volk, J. Stengel, and F. Schultmann, "Building information modeling (BIM) for existing buildings: Literature review and future needs," *Automation in Construction*, vol. 38, pp. 109-127, 2014, doi: 10.1016/j.autcon.2013.10.023.
