@@ -1,7 +1,4 @@
 # Background research contents
-to be used as introduction, related work and methods in the final research paper
-write down keypoints/document outline
-use it later throughout the ptoject
 
 ## Introduction
 
@@ -47,8 +44,15 @@ use it later throughout the ptoject
 ## Background/Related work
 
 ### 1. Concepts and definitions
-- 3D representations: point cloud, mesh, Gaussian splats, BIM (IFC).
-- Geometry (shape and position) vs. semantics (which object, which class).
+- Building maintenance: asset, inventory inspection, BIM (IFC), Level of Detail (LoD), COBie (optional: what an asset list should contain).
+- Localisation: camera pose, SLAM, drift, loop closure, sensor fusion (e.g., camera and IMU).
+- Geometry reconstruction: depth, scale ambiguity of a single camera, 3D representations (point cloud, mesh, Gaussian splats).
+- Semantic identification: semantic segmentation, object detection, semantic mapping.
+- Building information modelling: scan-to-BIM, as-built (as-is) model.
+- 3D world models:
+    - (a) a measured 3D model of the building (the goal of this project).
+    - (b) learned or generative world models, which can be used as a means to reach (a).
+    - Measured vs. generated content: generated parts may look plausible without being correct, which matters for the accuracy requirement.
 - Figure: overview of representations?
 
 ### 2. Reconstruction pipeline
@@ -66,7 +70,32 @@ use it later throughout the ptoject
 - Conditions in this project: a person with a wearable camera, long corridors, glass, repetitive rooms.
 - Which assumptions remain valid and which do not.
 
-### 5. Research gap
+### 5. Available hardware for testing
+May move to the methods section of the final paper.
+- Capture devices (specifications: TODO, from manufacturer data sheets):
+
+| Device | Type | Provided by |
+|---|---|---|
+| Samsung Galaxy S25 | Smartphone | TODO |
+| Ray-Ban Meta glasses Gen 2 (Wayfarer) | Smart glasses | Heijmans |
+| DJI Osmo Pocket 3 | Handheld gimbal camera | TODO |
+| GoPro Fusion | 360° camera | TODO |
+| Ricoh Theta S | 360° camera | TODO |
+| Insta360 X6 | 360° camera | Heijmans |
+
+- Computing hardware:
+
+| Component | Specification |
+|---|---|
+| Operating system | Ubuntu 24.04.4 LTS |
+| CPU | AMD Ryzen 9 7950X, 16 cores, 32 threads |
+| RAM | Approximately 128 GB |
+| GPUs | Two NVIDIA RTX 4090, approximately 24 GB VRAM each |
+| Free storage | Approximately 42 GB on the project filesystem when checked |
+
+- Note: GPU memory does not combine across cards, so experiments should fit on one GPU.
+
+### 6. Research gap
 - Image-based reconstruction using recent advancements in technology has not been evaluated against the requirements of inventory inspection.
 - No standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5].
 
@@ -76,10 +105,23 @@ use it later throughout the ptoject
 - (optional) Results of object detection in 3D models (input for SQ4).
 
 ## Inspiring methodologies from other papers
-- Evaluation metrics and protocols used for 3D reconstruction (input for SQ1).
+- Evaluation metrics and protocols used for 3D reconstruction (input for SQ1). Criteria: geometric accuracy, reconstruction completeness, robustness, computational performance, and suitability for downstream asset modelling.
 - Ground truth: how reference data is obtained (e.g., a laser scan as reference).
 - Benchmark datasets for indoor reconstruction.
-- Research design: DOT framework.
+
+# Research process
+This research uses the following ICT research methods from the DOT framework [5]:
+
+| Method | DOT strategy |
+|---|---|
+| Expert interview (Heijmans; Fontys ICT Game Design and Video Production) | Library |
+| Problem analysis | Field |
+| Literature study | Library |
+| Available product analysis | Library |
+| Benchmark test | Showroom |
+| Decomposition | Workshop |
+| Prototyping | Workshop |
+| Requirements prioritization | Workshop |
 
 ## Conclusion
 - What is known: summary of the method families and their reported performance.
@@ -94,3 +136,5 @@ use it later throughout the ptoject
 [3] N. Abreu, A. Pinto, A. Matos, and M. Pires, "Procedural point cloud modelling in scan-to-BIM and scan-vs-BIM applications: A review," *ISPRS International Journal of Geo-Information*, vol. 12, no. 7, Art. no. 260, 2023, doi: 10.3390/ijgi12070260.
 
 [4] *Conditiemeting gebouwde omgeving - Deel 1: Methodiek*, NEN 2767-1+C1:2019, NEN, Delft, The Netherlands, 2019.
+
+[5] HBO-i, "ICT research methods: Methods pack for research in ICT," 2018. [Online]. Available: https://ictresearchmethods.nl/
