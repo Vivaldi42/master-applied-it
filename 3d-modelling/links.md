@@ -46,3 +46,24 @@ https://arxiv.org/pdf/2604.09877
 https://www.worldlabs.ai/blog/atlasge
 
 https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
+
+High Fidelity 3D Reconstruction (recommendation by Luca Tomescu - guy in Video production minor; recommended to me by video production teachers on the career day)
+https://www.jawset.com/
+
+recommendation by Luca Tomescu
+https://lumalabs.ai/
+
+recommendation by Luca Tomescu
+https://www.kiriengine.app/
+
+recommendation by Luca Tomescu
+https://gumroadfx.gumroad.com/
+
+## Links about building maintenance
+
+most important general source for your introduction. It reviews over 180 publications.
+It finds that BIM is rarely used for existing buildings, because of the effort of converting captured data into BIM objects, the difficulty of keeping information updated and uncertain data. This directly supports your "general problem" paragraph.
+https://publikationen.bibliothek.kit.edu/1000039918/3024499
+
+A paper on the NEN 2767 condition assessment method, hosted at the University of Évora. An academic description of the six-point condition scale and the defect lists.
+https://dspace.uevora.pt/rdpc/bitstream/10174/4771/1/5.10.pdf
