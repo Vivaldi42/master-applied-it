@@ -67,3 +67,21 @@ https://publikationen.bibliothek.kit.edu/1000039918/3024499
 
 A paper on the NEN 2767 condition assessment method, hosted at the University of Évora. An academic description of the six-point condition scale and the defect lists.
 https://dspace.uevora.pt/rdpc/bitstream/10174/4771/1/5.10.pdf
+
+New links:
+https://arxiv.org/pdf/2101.00443
+
+https://www.mdpi.com/2076-3417/13/4/2304\
+
+https://waldjohannau.github.io/RIO/
+
+https://manycore-research.github.io/SpatialLM/
+
+https://github.com/harry7557558/spirula-studio
+
+https://research.nvidia.com/labs/lpr/vflash/
+
+https://sandflow.ai/#video
+
+https://github.com/Sandflow-ai/sand3d
+
