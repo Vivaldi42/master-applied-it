@@ -43,7 +43,7 @@ How can a 3D model of indoor space be developed to support building inventory in
 1. Which metrics evaluate methods for generating a 3D model?
 2. What methods exist and how do they compare on these metrics in literature?
 3. How do the selected methods perform in experiments and which factors affect the results?
-4. (possibly later) How can assets of one type and their condition be identified in the 3D model?
+4. How can assets of one type and their condition be identified in the 3D model?
 
 ## 5. Expected Business and Technical Outcomes
 
