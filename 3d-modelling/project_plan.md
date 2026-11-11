@@ -23,13 +23,13 @@ The research problem is determining whether video-based 3D reconstruction and as
 
 ## 3. Project Objectives
 
-**Research objective:** Evaluate how video-based 3D reconstruction and asset recognition can support building inventory collection for maintenance.
+Build an end-to-end prototype (i.e., MVP) incl. 3D model generation and object recognition. Asset recognition by room and floor has a higher priority than geometric accuracy. Focus on one generic room (e.g., office space). The priority is fixed assets such as fire extinguishers, emergency exits, lights, ventilation.
 
-The research aims to:
+Focus on building the 3D model without acessing external cloud service (i.e., ABRO regulations). Compare the developed system to OpenSpace - focus on X6 and smart glasses.
 
-- Compare selected methods in terms of model detail, completeness, processing time and asset recognition accuracy (targetting 10-15 cm deviation from the physical world).
-- Assess whether assets can be located by room and floor.
-- Identify limitations and conditions affecting practical use.
+Check what operating systems can your system run on.
+
+Currently the industry standard is Autodesk Revit BIM.
 
 **Practical objective:** Provide Heijmans with evidence to assess whether these methods can produce a reliable inventory with less collection and recording effort than the current process.
 
