@@ -1,4 +1,4 @@
-# Background research contents
+# Background Research Document
 
 ## Introduction
 
@@ -29,7 +29,7 @@
     - SQ1. Which metrics evaluate methods for generating a 3D model?
     - SQ2. What methods exist and how do they compare on these metrics in literature?
     - SQ3. How do the selected methods perform in experiments and which factors affect the results?
-    - (possibly later) SQ4. How can assets of one type and their condition be identified in the 3D model?
+    - SQ4. How can assets of one type and their condition be identified in the 3D model?
 
 ## Background/Related work
 
@@ -101,7 +101,7 @@ Methods section of the final paper.
 This research uses the following ICT research methods from the DOT framework [5]:
 
 | Method | DOT strategy | Activity |
-|---|---|---|
+|---|---|---------|
 | Expert interview | Library | Heijmans stakeholders were interviewed about the maintenance process and its problems. An interview was conducted also with a maintenance expert. Fontys ICT Game Design and Video Production experts were interviewed about 3D reconstruction of physical spaces used for gaming and video production. |
 | Problem analysis | Field | The interview results were documented in a problem analysis, which was discussed with and approved by the stakeholders. |
 | Literature study | Library | Review papers on BIM for existing buildings, scan-to-BIM, and condition assessment were studied to describe the domain and the research gap. |
