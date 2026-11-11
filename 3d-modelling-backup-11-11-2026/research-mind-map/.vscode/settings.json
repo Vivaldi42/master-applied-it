@@ -1,0 +1,4 @@
+{
+  // Keep note files clean: do not append link reference definitions
+  "foam.edit.linkReferenceDefinitions": "off"
+}

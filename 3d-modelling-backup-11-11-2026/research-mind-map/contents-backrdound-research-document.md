@@ -1,0 +1,33 @@
+# Background research contents
+to be used as introduction, related work and methods in the final paper
+write down keypoints/document outline
+you use it later throughout the ptoject
+
+## Introduction
+- general intro to the application domain (more abstract overview)
+- problem analysis (Heijmans)
+- your research question
+
+## Background/Related work
+- history of the field
+- more about the field - build maintenance, world models, robotics algorithms (more concrete overview)
+- in general how it's done in this field
+- your research gap + motivation for it with arguments/limitations found in literature
+- key/overview figures?
+- relevant concepts and definitions?
+
+## Relevant results from other papers
+- which results did you find that are relevant to your research question and how are they relevant -> you will be building or improving on these results in some way
+- what others did in this domain you can improve on
+
+## Inspiring methodologies from other papers
+- which methods and best practices you found that you could also use in your own research + why are they interesting for you
+
+## Conclusion
+- short summary of what you surveyed and the links to your research question
+- dont put references here
+
+## References
+- list of papers you read, which are referenced from the previous sections - use Zotero for reference management
+
+- use IEEE
