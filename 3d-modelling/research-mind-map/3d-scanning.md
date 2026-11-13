@@ -14,4 +14,4 @@ These points can then be used to extrapolate the shape of the subject (a process
 
 3D reconstruction is the process of creating a digital 3D model of a real-world object, person, or scene using 2D images, video or sensor data.
 
-[[3d-reconstruction|3D reconstruction]]
+[[3d-modelling-backup-11-11-2026/research-mind-map/3d-reconstruction|3D reconstruction]]
