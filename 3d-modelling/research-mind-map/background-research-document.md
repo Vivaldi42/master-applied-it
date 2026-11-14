@@ -22,13 +22,13 @@
 - Goal: a person walks through the building with a handheld or wearable camera. The captured data is converted into a 3D model of the building. An asset list can be extracted from the model.
 - Requirements:
 
-| # | Requirement |
-|---|--------------|
-| R1 | For each room, the solution reports which fixed asset types (e.g. fire extinguishers, emergency exits, lights, ventilation) are present and how many of each. |
-| R2 | The 3D model represents the room and its assets at real-world scale. Positions deviate from reality by roughly 10 to 15 cm at most (indicative value). Spatial accuracy has priority over visual realism. |
-| R3 | On-premise data processing is preferred. Cloud-based methods score lower. |
-| R4 | The input data is collected by a person who walks through the building with a handheld or wearable camera. |
-| R5 | A short video walkthrough per room is sufficient input, without manual recording of assets. Processing is as fast as possible. |
+| # | Name | Requirement |
+|---|---|--------------|
+| R1 | Asset count | For each room, the solution reports which fixed asset types (e.g. fire extinguishers, emergency exits, lights, ventilation) are present and how many of each. |
+| R2 | Spatial accuracy | The 3D model represents the room and its assets at real-world scale. Positions deviate from reality by roughly 10 to 15 cm at most (indicative value). Spatial accuracy has priority over visual realism. |
+| R3 | Data security | On-premise data processing is preferred. Cloud-based methods score lower. |
+| R4 | Input data | The input data is collected by a person who walks through the building with a handheld or wearable camera. A short video walkthrough per room is sufficient input, without manual recording of assets. |
+| R5 | Execution time | Processing is as fast as possible. |
 
 *- Gap that motivates SQ1: no standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].*
 
@@ -99,9 +99,9 @@ Methods section of the final paper.
 | C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | [9, Sec. 6] |
 | C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | [9, Sec. 8] |
 | C4 | Asset detection quality | R1 | Detection precision, recall and F1 score, counted in assets | [10, Sec. 6.1] |
-| C5 | Processing time | R5 | Time from video to result | - |
-| C6 | Runs locally | R3 | Code and model weights available for on-premise use | - |
-| C7 | Input type | R4 | Works with video from one handheld or wearable camera | - |
+| C5 | Processing time and hardware demand | R5 | Time from video to result and GPU memory needed | - |
+| C6 | Runs locally | R3 | Code and model weights available to run on own hardware: yes or no | - |
+| C7 | Input type | R4 | Works with video from one camera: yes or no | - |
 
 ### 7. Research gap
 - Image-based reconstruction using recent advancements in technology has not been evaluated against the requirements of inventory inspection.
