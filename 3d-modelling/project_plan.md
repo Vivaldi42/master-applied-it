@@ -40,10 +40,10 @@ Currently the industry standard is Autodesk Revit BIM.
 How can visual data collected during building walkthroughs be used to reliably identify and localise building assets to support inventory inspections?
 
 **Subquestions**:
-    - SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
-    - SQ2. **Approaches and their limitations**: Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?
-    - SQ3. **Developing a solution**: How can these approaches be combined into a solution that identifies assets and associates them with reliable spatial locations?
-    - SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
+- SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
+- SQ2. **Approaches and their limitations**: Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?
+- SQ3. **Developing a solution**: How can these approaches be combined into a solution that identifies assets and associates them with reliable spatial locations?
+- SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
 
 ## 5. Expected Business and Technical Outcomes
 
