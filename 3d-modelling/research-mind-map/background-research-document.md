@@ -4,11 +4,12 @@
 
 ### 1. Domain
 - Building maintenance requires data on installed components and equipment, including their exact location [1, Sec. 1].
-- In many existing buildings this information is incomplete, obsolete, or fragmented [1, Sec. 1].
-- Most existing buildings are not maintained with BIM [1].
-- Creating a model of an existing building from captured data (scan-to-BIM) is costly and mainly manual [1, Sec. 2], [2].
-- Camera-based reconstruction has traditionally been cheaper but less accurate than laser scanning [3, Sec. 2.2.2].
-- Recent technological advances may allow camera-based reconstruction to reach higher accuracy. This is the main research gap.
+- In many existing buildings the available building information is incomplete, outdated or scattered [1, Sec. 1].
+- Most existing buildings are not maintained with BIM [1, Sec. 4.4.1]. The Heijmans stakeholders confirm this for the Dutch industry today (see Problem).
+- Creating a model of an existing building from captured data (scan-to-BIM) is costly and mainly manual [1, Sec. 2], [2, Sec. 1].
+- Camera-based reconstruction is cheaper but less accurate than laser scanning [3, Sec. 2.2.2].
+- Recent learning-based methods make camera-based reconstruction more robust and easier to use [6, Sec. 3].
+- Their geometric accuracy for building interiors has not been established. The closest indoor study did not measure it [7, Sec. 1, Sec. 4.2], and an outdoor study found that Gaussian splatting is not yet a mapping tool [8, Sec. 5]. This is the main research gap.
 
 ### 2. Problem
 - Heijmans maintains large buildings (e.g., offices, hospitals, educational institutions, and airports) under fixed-term contracts.
@@ -126,3 +127,9 @@ This research uses the following ICT research methods from the DOT framework [5]
 [4] *Conditiemeting gebouwde omgeving - Deel 1: Methodiek*, NEN 2767-1+C1:2019, NEN, Delft, The Netherlands, 2019.
 
 [5] HBO-i, "ICT research methods: Methods pack for research in ICT," 2018. [Online]. Available: https://ictresearchmethods.nl/
+
+[6] W. Zhang, Y. Wu, S. Li, W. Ma, X. Ma, Q. Li, and Q. Wang, "Review of feed-forward 3D reconstruction: From DUSt3R to VGGT," arXiv preprint arXiv:2507.08448, 2025.
+
+[7] S. Xu, J. Wang, J. Xia, and W. Shou, "Evaluating radiance field-inspired methods for 3D indoor reconstruction: A comparative analysis," *Buildings*, vol. 15, no. 6, Art. no. 848, 2025, doi: 10.3390/buildings15060848.
+
+[8] S. McNally, S. Jabari, H. McGrath, and M. Masry, "A comprehensive evaluation of the spatial accuracy of building Gaussian splatting," *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, vol. XI-M-1-2026, pp. 31-38, 2026, doi: 10.5194/isprs-annals-XI-M-1-2026-31-2026.
