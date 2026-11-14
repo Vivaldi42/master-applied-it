@@ -25,12 +25,13 @@
     - Asset list: floor and room per asset, as complete and correct as possible.
     - Data processing on premise is preferred (esp. relevant for secret projects).
 - Gap that motivates SQ1: no standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].
-- **Main research question:** How can a 3D model of indoor space be developed to support building inventory inspection based on visual input?
-- subquestions:
-    - SQ1. Which metrics evaluate methods for generating a 3D model?
-    - SQ2. What methods exist and how do they compare on these metrics in literature?
-    - SQ3. How do the selected methods perform in experiments and which factors affect the results?
-    - SQ4. How can assets of one type and their condition be identified in the 3D model?
+
+- **Main research question:** How can visual data collected during building walkthroughs be used to reliably identify and localise building assets to support inventory inspections?
+- **Subquestions**:
+    - SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
+    - SQ2. **Approaches and their limitations**: Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?
+    - SQ3. **Developing a solution**: How can these approaches be combined into a solution that identifies assets and associates them with reliable spatial locations?
+    - SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
 
 ## Background/Related work
 

@@ -37,13 +37,13 @@ Currently the industry standard is Autodesk Revit BIM.
 
 **Main research question:** 
 
-How can a 3D model of indoor space be developed to support building inventory inspection based on visual input?
+How can visual data collected during building walkthroughs be used to reliably identify and localise building assets to support inventory inspections?
 
-**Subquestions:**
-1. Which metrics evaluate methods for generating a 3D model?
-2. What methods exist and how do they compare on these metrics in literature?
-3. How do the selected methods perform in experiments and which factors affect the results?
-4. How can assets of one type and their condition be identified in the 3D model?
+**Subquestions**:
+    - SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
+    - SQ2. **Approaches and their limitations**: Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?
+    - SQ3. **Developing a solution**: How can these approaches be combined into a solution that identifies assets and associates them with reliable spatial locations?
+    - SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
 
 ## 5. Expected Business and Technical Outcomes
 
