@@ -95,10 +95,10 @@ Methods section of the final paper.
 ### 6. Evaluation criteria
 | # | Criterion | Requirement | Metric | Source |
 |---|---|---|---|---|
-| C1 | Geometric accuracy | R2 | Precision: share of model points within a distance threshold of the reference | Knapitsch et al. 2017, Sec. 6 |
-| C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | Knapitsch et al. 2017, Sec. 6 |
-| C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | Knapitsch et al. 2017, Sec. 8 |
-| C4 | Asset detection quality | R1 | Detection precision, recall and F1 score, counted in assets | Raychaudhuri and Chang 2025, Sec. 6.1 |
+| C1 | Geometric accuracy | R2 | Precision: share of model points within a distance threshold of the reference | [9, Sec. 6] |
+| C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | [9, Sec. 6] |
+| C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | [9, Sec. 8] |
+| C4 | Asset detection quality | R1 | Detection precision, recall and F1 score, counted in assets | [10, Sec. 6.1] |
 | C5 | Processing time | R5 | Time from video to result | - |
 | C6 | Runs locally | R3 | Code and model weights available for on-premise use | - |
 | C7 | Input type | R4 | Works with video from one handheld or wearable camera | - |
@@ -152,3 +152,7 @@ This research uses the following ICT research methods from the DOT framework [5]
 [7] S. Xu, J. Wang, J. Xia, and W. Shou, "Evaluating radiance field-inspired methods for 3D indoor reconstruction: A comparative analysis," *Buildings*, vol. 15, no. 6, Art. no. 848, 2025, doi: 10.3390/buildings15060848.
 
 [8] S. McNally, S. Jabari, H. McGrath, and M. Masry, "A comprehensive evaluation of the spatial accuracy of building Gaussian splatting," *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, vol. XI-M-1-2026, pp. 31-38, 2026, doi: 10.5194/isprs-annals-XI-M-1-2026-31-2026.
+
+[9] A. Knapitsch, J. Park, Q.-Y. Zhou, and V. Koltun, "Tanks and temples: Benchmarking large-scale scene reconstruction," *ACM Transactions on Graphics*, vol. 36, no. 4, Art. no. 78, 2017, doi: 10.1145/3072959.3073599.
+
+[10] S. Raychaudhuri and A. X. Chang, "Semantic mapping in indoor embodied AI: A survey on advances, challenges, and future directions," *Transactions on Machine Learning Research*, 2025. [Online]. Available: https://arxiv.org/abs/2501.05750
