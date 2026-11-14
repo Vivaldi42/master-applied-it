@@ -61,6 +61,7 @@ Heijmans project (morning standup) - Nico and Tom - 03.11.2026
 ---
 
 Portfolio midterm review - Nico and Tom - 10.11.2026
-
-- Use criteria-based decision making in the background research document. Define criteria and substantiate the criteria. Also create a table and use --, -, +, ++ to justify the choices. List 12-18 potential algorithms and using criteria-based decision making reduce to 5 algorithms which you can investigate further by experimenting with them.
-- Build an end-to-end prototype (i.e., MVP) incl. 3D model generation and object recognition and then refine it iteratively. 
+- Complete the background analysis. Transform the current research outline into a critical, evidence-based comparison of relevant reconstruction methods and their applicability to maintenance. Use criteria-based decision making in the background research document. Define criteria and substantiate the criteria. Also create a table and use --, -, +, ++ to justify the choices. List 12-18 potential algorithms and using criteria-based decision making reduce to 5 algorithms which you can investigate further by experimenting with them.
+- Establish a reproducible evaluation method. Define datasets, reference measurements, accuracy metrics and test conditions before comparing approaches.
+- Demonstrate concrete software and hardware-interfacing evidence. Develop a limited working pipeline, document how sensor data is acquired and evaluate its performance. Build the end-to-end prototype (i.e., MVP) incl. 3D model generation and object recognition and then refine it iteratively. 
+- Connect technical results to professional value and transferability. Demonstrate whether the approach can support building inventory inspections and identify which findings may be useful in other buildings, devices or maintenance contexts.
