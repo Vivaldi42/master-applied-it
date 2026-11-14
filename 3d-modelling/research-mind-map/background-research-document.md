@@ -18,14 +18,21 @@
 - Heijmans then performs an inventory inspection: an inspector records every asset and its condition according to NEN 2767 [4]. The inspection takes days to weeks and is monotonous.
 - Current mitigations (combining data sources, AR) depend on a BIM model, which most buildings lack.
 
-### 3. Goal and research questions
+### 3. Goal and requirements
 - Goal: a person walks through the building with a wearable camera. The captured data is converted into a 3D model of the building. An asset list can be extracted from the model.
-- Requirements from stakeholders:
-    - 3D model: location accuracy of 10 to 15 cm.
-    - Asset list: floor and room per asset, as complete and correct as possible.
-    - Data processing on premise is preferred (esp. relevant for secret projects).
+- Requirements:
+
+| # | Requirement |
+|---|--------------|
+| R1 | For each room, the solution reports which fixed asset types (e.g. fire extinguishers, emergency exits, lights, ventilation) are present and how many of each. |
+| R2 | The 3D model represents the room and its assets at real-world scale. Positions deviate from reality by roughly 10 to 15 cm at most (indicative value). Spatial accuracy has priority over visual realism. |
+| R3 | On-premise data processing is preferred. Cloud-based methods score lower. |
+| R4 | The input data is collected by a person who walks through the building with a handheld or wearable camera. |
+| R5 | A short video walkthrough per room is sufficient input, without manual recording of assets. Processing is as fast as possible. |
+
 - Gap that motivates SQ1: no standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].
 
+### 4. Research questions
 - **Main research question:** How can visual data collected during building walkthroughs be used to reliably identify and localise building assets to support inventory inspections?
 - **Subquestions**:
     - SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
