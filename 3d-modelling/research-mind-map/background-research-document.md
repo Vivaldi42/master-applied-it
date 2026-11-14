@@ -19,7 +19,7 @@
 - Current mitigations (combining data sources, AR) depend on a BIM model, which most buildings lack.
 
 ### 3. Goal and requirements
-- Goal: a person walks through the building with a wearable camera. The captured data is converted into a 3D model of the building. An asset list can be extracted from the model.
+- Goal: a person walks through the building with a handheld or wearable camera. The captured data is converted into a 3D model of the building. An asset list can be extracted from the model.
 - Requirements:
 
 | # | Requirement |
@@ -30,7 +30,7 @@
 | R4 | The input data is collected by a person who walks through the building with a handheld or wearable camera. |
 | R5 | A short video walkthrough per room is sufficient input, without manual recording of assets. Processing is as fast as possible. |
 
-- Gap that motivates SQ1: no standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].
+*- Gap that motivates SQ1: no standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].*
 
 ### 4. Research questions
 - **Main research question:** How can visual data collected during building walkthroughs be used to reliably identify and localise building assets to support inventory inspections?
@@ -92,7 +92,18 @@ Methods section of the final paper.
 
 - Note: GPU memory does not combine across cards, so experiments should fit on one GPU.
 
-### 6. Research gap
+### 6. Evaluation criteria
+| # | Criterion | Requirement | Metric | Source |
+|---|---|---|---|---|
+| C1 | Geometric accuracy | R2 | Precision: share of model points within a distance threshold of the reference | Knapitsch et al. 2017, Sec. 6 |
+| C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | Knapitsch et al. 2017, Sec. 6 |
+| C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | Knapitsch et al. 2017, Sec. 8 |
+| C4 | Asset detection quality | R1 | Detection precision, recall and F1 score, counted in assets | Raychaudhuri and Chang 2025, Sec. 6.1 |
+| C5 | Processing time | R5 | Time from video to result | - |
+| C6 | Runs locally | R3 | Code and model weights available for on-premise use | - |
+| C7 | Input type | R4 | Works with video from one handheld or wearable camera | - |
+
+### 7. Research gap
 - Image-based reconstruction using recent advancements in technology has not been evaluated against the requirements of inventory inspection.
 - No standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5].
 
