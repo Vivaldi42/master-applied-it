@@ -18,9 +18,25 @@
 - Heijmans then performs an inventory inspection: an inspector records every asset and its condition according to NEN 2767 [4]. The inspection takes days to weeks and is monotonous.
 - Current mitigations (combining data sources, AR) depend on a BIM model, which most buildings lack.
 
-### 3. Goal and requirements
+### 3. Goal
 - Goal: a person walks through the building with a handheld or wearable camera. The captured data is converted into a 3D model of the building. An asset list can be extracted from the model.
-- Requirements:
+
+### 4. Research gap
+- Image-based reconstruction using recent advancements in technology has not been evaluated against the requirements of inventory inspection.
+- No standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].
+
+### 5. Research questions
+- **Main research question:** How can visual data collected during building walkthroughs be used to reliably identify and localise building assets to support inventory inspections?
+- **Subquestions**:
+    - SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
+    - SQ2. **Approaches and their limitations**: Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?
+    - SQ3. **Developing a solution**: How can these approaches be combined into a solution that identifies assets and associates them with reliable spatial locations?
+    - SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
+
+## SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
+
+### 1. Requirements
+The requirements originate from interviews with the Heijmans stakeholders. The interview results are documented in a problem analysis, which the stakeholders approved (see Research process).
 
 | # | Name | Requirement |
 |---|---|--------------|
@@ -30,17 +46,18 @@
 | R4 | Input data | The input data is collected by a person who walks through the building with a handheld or wearable camera. A short video walkthrough per room is sufficient input, without manual recording of assets. |
 | R5 | Execution time | Processing is as fast as possible. |
 
-*- Gap that motivates SQ1: no standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5], [2, Sec. 4].*
+### 2. Evaluation criteria
+| # | Criterion | Requirement | Metric | Source |
+|---|---|---|---|---|
+| C1 | Geometric accuracy | R2 | Precision: share of model points within a distance threshold of the reference | [9, Sec. 6] |
+| C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | [9, Sec. 6] |
+| C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | [9, Sec. 8] |
+| C4 | Asset detection quality | R1 | F1 score after one-to-one matching of detected and reference assets | [10, Sec. 3.1] |
+| C5 | Processing time and hardware demand | R5 | Time from video to result and GPU memory needed | Requirement 5 |
+| C6 | Runs locally | R3 | Code and model weights available to run on own hardware: yes or no | Requirement 3 |
+| C7 | Input type | R4 | Works with video from one handheld or wearable camera | Requirement 4 |
 
-### 4. Research questions
-- **Main research question:** How can visual data collected during building walkthroughs be used to reliably identify and localise building assets to support inventory inspections?
-- **Subquestions**:
-    - SQ1. **Requirements and metrics**: What requirements must a solution meet to support building inventory inspections, and which metrics measure them?
-    - SQ2. **Approaches and their limitations**: Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?
-    - SQ3. **Developing a solution**: How can these approaches be combined into a solution that identifies assets and associates them with reliable spatial locations?
-    - SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
-
-## Background/Related work
+## SQ2. **Approaches and their limitations**: Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?
 
 ### 1. Concepts and definitions
 - Building maintenance: asset, inventory inspection, BIM (IFC), Level of Detail (LoD), COBie (optional: what an asset list should contain).
@@ -67,7 +84,18 @@
 - Conditions in this project: a person with a wearable camera, long corridors, glass, repetitive rooms.
 - Which assumptions remain valid and which do not.
 
-### 5. Available hardware for testing
+### 5. Reported results and limitations
+- Reported accuracy and completeness of each method family on indoor scenes, compared with the 10 to 15 cm requirement (input for SQ2).
+- Factors known to cause failures (e.g., glass, low-texture surfaces, occlusion) (input for SQ3 test conditions).
+
+## Recommendations for SQ3 and SQ4
+
+### 1. Evaluation method
+- Ground truth: how reference data is obtained (e.g., a laser scan as reference).
+- Benchmark datasets for indoor reconstruction.
+- (optional) Results of object detection in 3D models (input for SQ4).
+
+### 2. Available hardware for testing
 Methods section of the final paper.
 - Capture devices (specifications from datasheets: TODO):
 
@@ -91,31 +119,6 @@ Methods section of the final paper.
 | Free storage | Approximately 42 GB on the project filesystem when checked |
 
 - Note: GPU memory does not combine across cards, so experiments should fit on one GPU.
-
-### 6. Evaluation criteria
-| # | Criterion | Requirement | Metric | Source |
-|---|---|---|---|---|
-| C1 | Geometric accuracy | R2 | Precision: share of model points within a distance threshold of the reference | [9, Sec. 6] |
-| C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | [9, Sec. 6] |
-| C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | [9, Sec. 8] |
-| C4 | Asset detection quality | R1 | F1 score after one-to-one matching of detected and reference assets | [10, Sec. 3.1] |
-| C5 | Processing time and hardware demand | R5 | Time from video to result and GPU memory needed | Requirement 5 |
-| C6 | Runs locally | R3 | Code and model weights available to run on own hardware: yes or no | Requirement 3 |
-| C7 | Input type | R4 | Works with video from one handheld or wearable camera | Requirement 4 |
-
-### 7. Research gap
-- Image-based reconstruction using recent advancements in technology has not been evaluated against the requirements of inventory inspection.
-- No standard method exists to assess and compare model quality [1, Sec. 4.3.4]. Benchmark datasets are lacking [3, Sec. 3.5].
-
-## Relevant results from other papers
-- Reported accuracy and completeness of each method family on indoor scenes, compared with the 10 to 15 cm requirement (input for SQ2).
-- Factors known to cause failures (e.g., glass, low-texture surfaces, occlusion) (input for SQ3 test conditions).
-- (optional) Results of object detection in 3D models (input for SQ4).
-
-## Inspiring methodologies from other papers
-- Evaluation metrics and protocols used for 3D reconstruction (input for SQ1). Criteria: geometric accuracy, reconstruction completeness, robustness, computational performance, and suitability for downstream asset modelling.
-- Ground truth: how reference data is obtained (e.g., a laser scan as reference).
-- Benchmark datasets for indoor reconstruction.
 
 # Research process
 This research uses the following ICT research methods from the DOT framework [5]:
