@@ -98,10 +98,10 @@ Methods section of the final paper.
 | C1 | Geometric accuracy | R2 | Precision: share of model points within a distance threshold of the reference | [9, Sec. 6] |
 | C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | [9, Sec. 6] |
 | C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | [9, Sec. 8] |
-| C4 | Asset detection quality | R1 | Detection precision, recall and F1 score, counted in assets | [10, Sec. 6.1] |
-| C5 | Processing time | R5 | Time from video to result | - |
-| C6 | Runs locally | R3 | Code and model weights available for on-premise use | - |
-| C7 | Input type | R4 | Works with video from one handheld or wearable camera | - |
+| C4 | Asset detection quality | R1 | F1 score after one-to-one matching of detected and reference assets | [10, Sec. 3.1] |
+| C5 | Processing time | R5 | Time from video to result | Requirement 5 |
+| C6 | Runs locally | R3 | Code and model weights available for on-premise use | Requirement 3 |
+| C7 | Input type | R4 | Works with video from one handheld or wearable camera | Requirement 4 |
 
 ### 7. Research gap
 - Image-based reconstruction using recent advancements in technology has not been evaluated against the requirements of inventory inspection.
@@ -155,4 +155,4 @@ This research uses the following ICT research methods from the DOT framework [5]
 
 [9] A. Knapitsch, J. Park, Q.-Y. Zhou, and V. Koltun, "Tanks and temples: Benchmarking large-scale scene reconstruction," *ACM Transactions on Graphics*, vol. 36, no. 4, Art. no. 78, 2017, doi: 10.1145/3072959.3073599.
 
-[10] S. Raychaudhuri and A. X. Chang, "Semantic mapping in indoor embodied AI: A survey on advances, challenges, and future directions," *Transactions on Machine Learning Research*, 2025. [Online]. Available: https://arxiv.org/abs/2501.05750
+[10] Y. Mao *et al.*, "SpatialLM: Training large language models for structured indoor modeling," in *Advances in Neural Information Processing Systems (NeurIPS)*, 2025. [Online]. Available: https://arxiv.org/abs/2506.07491
