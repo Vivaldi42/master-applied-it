@@ -71,7 +71,14 @@ The requirements originate from interviews with the Heijmans stakeholders. The i
     - Measured vs. generated content: generated parts may look plausible without being correct, which matters for the accuracy requirement.
 
 ### 2. Reconstruction pipeline
-- Capture, camera poses and geometry, 3D representation, semantics, asset list or BIM.
+The pipeline combines the scan-to-BIM framework [11, Sec. 1] with the stages of image-based reconstruction [9, Sec. 7]. The scan-to-BIM framework assumes a laser scanner, which delivers a point cloud directly. With a camera, the point cloud is computed from the video (stage 2).
+
+| Stage | Output | Source |
+|---|---|---|
+| 1. Capture | Video | [11, Sec. 1] |
+| 2. Camera poses and geometry | Point cloud | [9, Sec. 7] |
+| 3. Semantics | Detected and classified assets | [11, Sec. 1] |
+| 4. Asset list or BIM | Asset list or BIM model | [11, Sec. 1] |
 
 ### 3. Method families per pipeline stage
 - Photogrammetry: structure from motion (SfM) and multi-view stereo (MVS).
@@ -159,3 +166,5 @@ This research uses the following ICT research methods from the DOT framework [5]
 [9] A. Knapitsch, J. Park, Q.-Y. Zhou, and V. Koltun, "Tanks and temples: Benchmarking large-scale scene reconstruction," *ACM Transactions on Graphics*, vol. 36, no. 4, Art. no. 78, 2017, doi: 10.1145/3072959.3073599.
 
 [10] Y. Mao *et al.*, "SpatialLM: Training large language models for structured indoor modeling," in *Advances in Neural Information Processing Systems (NeurIPS)*, 2025. [Online]. Available: https://arxiv.org/abs/2506.07491
+
+[11] R. Rashdi, J. Martínez-Sánchez, P. Arias, and Z. Qiu, "Scanning technologies to building information modelling: A review," *Infrastructures*, vol. 7, no. 4, Art. no. 49, 2022, doi: 10.3390/infrastructures7040049.
