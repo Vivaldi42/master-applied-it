@@ -198,31 +198,29 @@ Runner-ups: DROID-SLAM [32], Depth Anything 3 [37].
 | 1 | SAM 3 [45] | Detect and track assets from a text prompt | No training needed, tracking supports counting each asset once (R1) | Open-vocabulary models failed on specialised components [64, Sec. 3] | C4 per asset type |
 | 2 | Grounding DINO with SAM 2 [46], [47] | Permissive alternative to rank 1 | Found all exit signs in panoramas [63, Sec. 6] | Same as rank 1 | C4 compared with rank 1 |
 | 3 | Own projection and clustering step | 3D position and count per room | Needed for R1 and R2 with any 2D detector | Background in boxes causes metre-level errors [63, Sec. 6] | Position error (R2), count error (R1) |
-| 4 | RF-DETR [54] | Detector trained on labelled assets | Fine-tuned detectors clearly outperformed open-vocabulary ones [64, Sec. 3]. Public training data exists [61], [65] | Covers only trained asset types | C4 compared with ranks 1 and 2 |
+| 4 | RF-DETR [54] | Detector trained on labelled assets | Fine-tuned detectors clearly outperformed open-vocabulary ones [64, Sec. 3]. Public datasets exist [61], [65], but their licences restrict or do not state commercial use | Covers only trained asset types | C4 compared with ranks 1 and 2 |
 | 5 | SpatialLM [10] | Room layout | Only method that outputs walls, doors and windows, needed to assign assets to rooms (R1) | Research-only weights, furniture classes | Correct room assignment |
 
 Runner-ups: OWLv2 [48], Qwen2.5-VL [52] or Qwen3-VL [53]. If floor plans can assign assets to rooms, OWLv2 replaces rank 5.
 
 ### 2. First experiment
-The first experiment narrows the selection of sec. 1 down to one reconstruction method (rank 1) and two detection methods (ranks 1 and 4), tested in one room on one asset type. It establishes a baseline. The other selected methods are tested later, one at a time, against this baseline.
+The first experiment narrows the selection of sec. 1 down to one reconstruction method (rank 1) and one detection method (rank 1), tested in one room on one asset type. It establishes a baseline. The other selected methods are tested later, one at a time, against this baseline.
 
 | Step | Choice | Justification |
 |---|------|------|
-| Capture | Samsung Galaxy S25, normal video, video stabilisation off, one room | Standard video file that can be transferred without Wi-Fi or cloud (SQ2, sec. 3). Stabilisation shifts and crops the frames, which disturbs reconstruction |
+| Capture | Samsung Galaxy S25, normal video, video stabilisation off (optical stabilisation of the lens stays active), one room | Standard video file that can be transferred without Wi-Fi or cloud (SQ2, sec. 3). Stabilisation shifts and crops the frames, which disturbs reconstruction |
 | Reconstruction | COLMAP [25] | Rank 1 in sec. 1, the reference method. All later reconstruction methods are compared with it |
 | Scale | One distance measured with a tape measure | Simplest way to obtain real-world scale (R2) |
-| Detection | Two detectors on the same video: SAM 3 [45] with a text prompt, and RF-DETR [54] trained on the Fire-ART dataset [61] | Answers the main open question of SQ2, sec. 6: open-vocabulary detection failed on specialised building components [64, Sec. 3] but worked on distinctive exit signs [63, Sec. 6] |
-| Asset type | Fire extinguishers | Included in the Fire-ART dataset, easy to describe in a text prompt and easy to count by hand |
+| Detection | SAM 3 [45] with a text prompt. | Rank 1 in sec. 1. Needs no training data. Tests whether open-vocabulary detection works for this asset type: it failed on specialised building components [64, Sec. 3] but worked on distinctive exit signs [63, Sec. 6]. If it fails, RF-DETR (rank 4) is tested next |
+| Asset type | Fire extinguishers | Easy to describe in a text prompt and easy to count by hand |
 | 3D position and count | Own projection and clustering step, using segmentation masks instead of boxes | Needed for R1 and R2. Boxes include background points, which caused position errors of several metres [63, Sec. 6] |
 | Reference | Hand count and tape measurements of each fire extinguisher | Ground truth for C1 and C4 |
 
 Results to report:
-- Detection precision, recall and F1 per detector (C4).
+- Detection precision, recall and F1 (C4).
 - Count error for the room (R1).
 - Position error per fire extinguisher in cm (R2).
 - Processing time per step (C5).
-
-Before the experiment: check the licence of the Fire-ART dataset.
 
 [TODO] First experiment": "Later experiment: check whether small assets remain detectable in 360° footage, which covers a room in one pass but spreads its resolution over the full view
 
