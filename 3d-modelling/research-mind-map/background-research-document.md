@@ -50,7 +50,15 @@
 ### 1.3 Goal
 - Goal: a person walks through the building with a handheld or wearable camera. The captured data is converted into a 3D model of the building. An asset list can be extracted from the model.
 
-[TODO] Justification why a 3D model is useful in this case.
+- The 3D model is both a deliverable and a processing step.
+- As a deliverable:
+    - Maintenance requires the exact location of components [1, Sec. 1]. The model provides asset positions and room dimensions in real-world units (e.g., to check whether furniture fits in a room). The stakeholders accept a deviation of 10 to 15 cm for this purpose.
+    - Current mitigations such as AR depend on a BIM model (Section 1.2). The stakeholders expect the 3D model to provide a spatial base for such applications and for creating a BIM model (stage 4, Section 3.2).
+    - Unlike annotated 2D floor plans (Section 1.2), the model also records height. Height separates assets that share the same floor position (e.g., a ceiling smoke detector above a wall-mounted fire extinguisher).
+- As a processing step:
+    - The model provides the room boundaries to assign each asset to a room.
+    - The same asset is visible in many frames. Merging the detections at one position in the model counts each asset once.
+- Cost: the 3D model adds processing time and a new error source, because reconstruction errors carry over into the asset positions. This research tests whether the benefits outweigh this cost.
 
 ### 1.4 Research gap
 - Image-based reconstruction using recent advancements in technology has not been evaluated against the requirements of inventory inspection.
@@ -157,7 +165,7 @@ The proposed methods are compared against the evaluation criteria described in S
 | Agisoft Metashape [28] | Photogrammetry | ++ | + | - | + | ++ | ++ | Paid |
 | RealityScan [29] | Photogrammetry | ++ | + | - | ++ | - | + | Free below 1 million USD revenue, paid above |
 | stella_vslam [30] | Visual SLAM | - | -- | + | ++ | ++ | ++ | Yes |
-| ORB-SLAM3 [31] | Visual SLAM | - | -- | + | ++ | ++ | + | Yes, copyleft (GPL) |
+| ORB-SLAM3 [31] | Visual SLAM | - | -- | + | ++ | ++ | + | Yes, but modified code must be shared (GPL) |
 | DROID-SLAM [32] | Visual SLAM | + | - | ++ | + | ++ | + | Yes |
 | DPV-SLAM [33] | Visual SLAM | + | -- | + | ++ | ++ | + | Yes |
 | MASt3R-SLAM [34] | Visual SLAM | + | + | ++ | + | ++ | + | No |
@@ -181,11 +189,11 @@ The five reconstruction methods selected for testing are justified in Section 4.
 | SAM 3 [45] | Segmentation and tracking | ++ | + | ++ | ++ | No | Yes, no military use |
 | Grounding DINO with SAM 2 [46], [47] | Open-vocabulary detection | + | + | ++ | ++ | No | Yes |
 | OWLv2 [48] | Open-vocabulary detection | + | + | ++ | ++ | No | Yes |
-| YOLO-World [49] and YOLOE [50] | Open-vocabulary detection | + | ++ | ++ | ++ | No | Yes, copyleft (GPL, AGPL) [TODO] rename in better way |
+| YOLO-World [49] and YOLOE [50] | Open-vocabulary detection | + | ++ | ++ | ++ | No | Yes, but modified code must be shared (GPL, AGPL) |
 | Florence-2 [51] | Open-vocabulary detection | + | ++ | ++ | ++ | No | Yes |
 | Qwen2.5-VL [52] and Qwen3-VL [53] | Open-vocabulary detection | + | - | ++ | ++ | No | Yes |
 | RF-DETR [54] | Fine-tuned closed-set detector | ++ after training, -- before | ++ | ++ | ++ | No | Yes |
-| Ultralytics YOLO11 [55] | Fine-tuned closed-set detector | ++ after training, -- before | ++ | ++ | ++ | No | Yes, copyleft (AGPL), or paid licence |
+| Ultralytics YOLO11 [55] | Fine-tuned closed-set detector | ++ after training, -- before | ++ | ++ | ++ | No | Yes, but modified code must be shared (AGPL), or paid licence |
 | Own projection and clustering baseline | 2D-to-3D lifting | Depends on 2D detector | + | ++ | ++ | Yes | Yes |
 | OpenMask3D [56] | 2D-to-3D lifting | + | - | ++ | - | Yes | Yes |
 | Open-YOLO 3D [57] | 2D-to-3D lifting | + | + | ++ | - | Yes | No, no licence stated |
@@ -212,7 +220,7 @@ Selection rule, in this order: (1) works with colour video and runs locally on o
 |---|------|------|------|------|------|
 | 1 | COLMAP with GLOMAP [25], [26] | Accuracy baseline | Reference pipeline [9], permissive licence, GLOMAP makes it faster | Holes or broken models at blank walls and glass [9, Sec. 8], slow | C1, C2, processing time |
 | 2 | MapAnything [36] | Fast, real-world scale | Only permissive method that outputs real-world scale (R2) | Accuracy on long buildings and frame limit on 24 GB unknown | Scale error, maximum frames per run |
-| 3 | VGGT [35] | Fast, feed-forward reference | Seconds per scene, tolerant of difficult images | No real-world scale, long videos must be split | C1 after scaling, drift between parts |
+| 3 | VGGT [35] | Fast, feed-forward reference | Seconds per scene, tolerant of difficult images | No real-world scale, long videos must be split. Licence excludes military use | C1 after scaling, drift between parts |
 | 4 | stella_vslam [30] | Camera positions from 360° video | Only open method that reads 360° video directly (3 of 6 devices) | Sparse map only, no real-world scale | Completeness of the camera path, drift |
 | 5 | DN-Splatter [41] | Dense model from ranks 1 to 4 | Built for indoor geometry, fills blank walls, gives a mesh | Indoor accuracy of splatting not established [7], [8] | C1, C2 compared with rank 1 |
 
@@ -222,7 +230,7 @@ Runner-ups: DROID-SLAM [32], Depth Anything 3 [37].
 
 | Rank | Method | Role | Why selected | Main risk | What to test |
 |---|---|---|---|---|---|
-| 1 | SAM 3 [45] | Detect and track assets from a text prompt | No training needed, tracking supports counting each asset once (R1) | Open-vocabulary models failed on specialised components [64, Sec. 3] | C4 per asset type |
+| 1 | SAM 3 [45] | Detect and track assets from a text prompt | No training needed, tracking supports counting each asset once (R1) | Open-vocabulary models failed on specialised components [64, Sec. 3]. Licence excludes military use | C4 per asset type |
 | 2 | Grounding DINO with SAM 2 [46], [47] | Permissive alternative to rank 1 | Found all exit signs in panoramas [63, Sec. 6] | Same as rank 1 | C4 compared with rank 1 |
 | 3 | Own projection and clustering step | 3D position and count per room | Needed for R1 and R2 with any 2D detector | Background in boxes causes metre-level errors [63, Sec. 6] | Position error (R2), count error (R1) |
 | 4 | RF-DETR [54] | Detector trained on labelled assets | Fine-tuned detectors clearly outperformed open-vocabulary ones [64, Sec. 3]. Public datasets exist [61], [65], but their licences restrict or do not state commercial use | Covers only trained asset types | C4 compared with ranks 1 and 2 |
@@ -249,7 +257,7 @@ Results to report:
 - Position error per fire extinguisher in cm (R2).
 - Processing time per step (C5).
 
-[TODO] First experiment": "Later experiment: check whether small assets remain detectable in 360° footage, which covers a room in one pass but spreads its resolution over the full view
+Later experiment: check whether small assets remain detectable in 360° footage. A 360° camera covers a room in one pass but spreads its resolution over the full view.
 
 ### 4.3 Available hardware for testing
 
