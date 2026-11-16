@@ -80,18 +80,30 @@ The pipeline combines the scan-to-BIM framework [11, Sec. 1] with the stages of 
 | 3. Semantics | Detected and classified assets | [11, Sec. 1] |
 | 4. Asset list or BIM | Asset list or BIM model | [11, Sec. 1] |
 
-### 3. Method families per pipeline stage
+### 3. Capture devices (stage 1)
+All devices output video. The Samsung Galaxy S25 is a personal device. Heijmans provides the Ray-Ban Meta glasses and the Insta360 X6. ISSD provides the DJI Osmo Pocket 3, the GoPro Fusion and the Ricoh Theta S. No source lists a depth sensor for any device. "Not listed" means that the source does not mention the property. "Unverified" means that no manufacturer document was found.
+
+| Device | Type | Motion data saved with the video | Data security (R3): transfer without Wi-Fi or cloud | Recording limit | Processing before reconstruction |
+|---|---|---|---| --- | --- |
+| Samsung Galaxy S25 | Smartphone | Not confirmed. Accelerometer and gyroscope are present [12] (third party) | Yes. Internal storage, USB cable to a computer [17] | Not confirmed. Samsung states a 10 minute limit for high-resolution video on Galaxy phones in general [22] | None expected. Standard video file |
+| Ray-Ban Meta glasses Gen 2 (Wayfarer) | Smart glasses | Not found | Not confirmed. Internal storage. The documented transfer runs through the Meta AI phone app (unverified) | 3 or 5 minutes per video, sources disagree (unverified) | None expected after the transfer through the phone app (unverified) |
+| DJI Osmo Pocket 3 | Handheld gimbal camera | Not listed [14] | Yes. microSD card, card reader or USB cable [18] | Battery: 166 minutes at 1080p and 24 fps [14]. Limit per video not found | None. MP4 file [14] |
+| Insta360 X6 | 360° camera | Not confirmed. A six-axis gyroscope is present [13] | Yes. microSD card, USB file transfer mode [19] | Battery: about 140 minutes at 8K and 30 fps [13]. Limit per video not found | Stitching with Insta360 software (unverified) |
+| GoPro Fusion | 360° camera | Yes. Accelerometer (200 Hz), gyroscope (3200 Hz) and magnetometer [15] | Yes. Two microSD cards (one per lens), card reader or USB cable [20] | Battery: about 75 minutes at 5.2K and 30 fps [23] (third party) | Stitching of the two files with GoPro Fusion Studio [20] |
+| Ricoh Theta S | 360° camera | Not listed [16] | Yes. Internal storage, USB cable to a computer [21] | 25 minutes per video [16] | Conversion with the RICOH THETA computer application [24] |
+
+### 4. Method families per pipeline stage
 - Photogrammetry: structure from motion (SfM) and multi-view stereo (MVS).
 - Robotics: simultaneous localisation and mapping (SLAM) and semantic mapping.
 - Neural and learning-based methods: Gaussian splatting, feed-forward reconstruction models.
 - Short history: from photogrammetry and laser scanning to SLAM to learning-based methods.
 
-### 4. Robotics assumptions vs. building inspection
+### 5. Robotics assumptions vs. building inspection
 - Typical assumptions of robotics methods (e.g., calibrated sensors on a robot, static scenes).
 - Conditions in this project: a person with a wearable camera, long corridors, glass, repetitive rooms.
 - Which assumptions remain valid and which do not.
 
-### 5. Reported results and limitations
+### 6. Reported results and limitations
 - Reported accuracy and completeness of each method family on indoor scenes, compared with the 10 to 15 cm requirement (input for SQ2).
 - Factors known to cause failures (e.g., glass, low-texture surfaces, occlusion) (input for SQ3 test conditions).
 
@@ -101,20 +113,10 @@ The pipeline combines the scan-to-BIM framework [11, Sec. 1] with the stages of 
 - Ground truth: how reference data is obtained (e.g., a laser scan as reference).
 - Benchmark datasets for indoor reconstruction.
 - (optional) Results of object detection in 3D models (input for SQ4).
+- [TODO] Expectation to test: 360° cameras cover a room in one pass but spread their resolution over the full view. The tests should check whether small assets remain detectable in 360° footage.
 
 ### 2. Available hardware for testing
 Methods section of the final paper.
-- Capture devices (specifications from datasheets: TODO):
-
-| Device | Type | Provided by |
-|---|---|---|
-| Samsung Galaxy S25 | Smartphone | personal device |
-| Ray-Ban Meta glasses Gen 2 (Wayfarer) | Smart glasses | Heijmans |
-| Insta360 X6 | 360° camera | Heijmans |
-| DJI Osmo Pocket 3 | Handheld gimbal camera | ISSD |
-| GoPro Fusion | 360° camera | ISSD |
-| Ricoh Theta S | 360° camera | ISSD |
-
 - Computing hardware:
 
 | Component | Specification |
@@ -168,3 +170,29 @@ This research uses the following ICT research methods from the DOT framework [5]
 [10] Y. Mao *et al.*, "SpatialLM: Training large language models for structured indoor modeling," in *Advances in Neural Information Processing Systems (NeurIPS)*, 2025. [Online]. Available: https://arxiv.org/abs/2506.07491
 
 [11] R. Rashdi, J. Martínez-Sánchez, P. Arias, and Z. Qiu, "Scanning technologies to building information modelling: A review," *Infrastructures*, vol. 7, no. 4, Art. no. 49, 2022, doi: 10.3390/infrastructures7040049.
+
+[12] Columbia University Information Technology, "Samsung Galaxy S25 specifications." Accessed: Nov. 15, 2026. [Online]. Available: https://www.cuit.columbia.edu/sites/default/files/content/CUIT%20Website%20Pages/Phone%20Specs/s25.pdf
+
+[13] Insta360, "Insta360 X6 user manual: Hardware specifications." Accessed: Nov. 15, 2026. [Online]. Available: https://onlinemanual.insta360.com/x6/en-us/specs/hardware
+
+[14] DJI, "Osmo Pocket 3: Specs." Accessed: Nov. 15, 2026. [Online]. Available: https://www.dji.com/osmo-pocket-3/specs
+
+[15] GoPro, "GPMF parser." GitHub. Accessed: Nov. 15, 2026. [Online]. Available: https://github.com/gopro/gpmf-parser
+
+[16] Ricoh Imaging, "RICOH THETA S." Accessed: Nov. 15, 2026. [Online]. Available: https://www.ricoh-imaging.co.jp/english/products/theta_s/
+
+[17] Samsung, "Share and transfer files with your Galaxy phone and Windows." Accessed: Nov. 16, 2026. [Online]. Available: https://www.samsung.com/us/support/answer/ANS10001478/
+
+[18] DJI, "Osmo Pocket 3: FAQ." Accessed: Nov. 16, 2026. [Online]. Available: https://www.dji.com/osmo-pocket-3/faq
+
+[19] Insta360, "X series: Transferring files from camera to PC." Accessed: Nov. 16, 2026. [Online]. Available: https://onlinemanual.insta360.com/x6/en-us/operating-tutorials/connect/pc
+
+[20] GoPro, "Fusion user manual." Accessed: Nov. 16, 2026. [Online]. Available: https://www.manualslib.com/manual/1356002/Gopro-Fusion.html
+
+[21] Ricoh, "RICOH THETA S user guide: Importing still images and videos to a computer." Accessed: Nov. 16, 2026. [Online]. Available: https://theta-archive.ricoh360.com/support.theta360.com/en/manual/s/content/pc/pc_03
+
+[22] Samsung, "Samsung phone stops recording videos after 10 minutes." Accessed: Nov. 16, 2026. [Online]. Available: https://www.samsung.com/us/support/troubleshoot/TSG10004918/
+
+[23] Digital Trends, "GoPro Fusion review." Accessed: Nov. 16, 2026. [Online]. Available: https://digitaltrends.com/photography/gopro-fusion-review
+
+[24] Ricoh, "RICOH THETA S user guide." Accessed: Nov. 16, 2026. [Online]. Available: https://theta-archive.ricoh360.com/support.theta360.com/en/manual/s/content/pc/pc_05
