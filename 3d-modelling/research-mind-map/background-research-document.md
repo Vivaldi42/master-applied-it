@@ -73,7 +73,7 @@
     - SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
 
 ## 2. SQ1: Requirements and metrics
-*What requirements must a solution meet to support building inventory inspections, and which metrics measure them?*
+**What requirements must a solution meet to support building inventory inspections, and which metrics measure them?**
 
 ### 2.1 Requirements
 The requirements originate from interviews with the Heijmans stakeholders. The interview results are documented in a problem analysis, which the stakeholders approved.
@@ -93,12 +93,12 @@ The requirements originate from interviews with the Heijmans stakeholders. The i
 | C2 | Completeness | R1, R2 | Recall: share of reference points that have a model point within the distance threshold | [9, Sec. 6] |
 | C3 | Robustness | R4, R5 | One connected, plausible model under difficult conditions (changing exposure, reflective and uniform surfaces) | [9, Sec. 8] |
 | C4 | Asset detection quality | R1 | F1 score after one-to-one matching of detected and reference assets | [10, Sec. 3.1] |
-| C5 | Processing time and hardware demand | R5 | Time from video to result and GPU memory needed | Requirement 5 |
+| C5 | Computational cost | R5 | Time from video to result and GPU memory needed | Requirement 5 |
 | C6 | Runs locally | R3 | Code and model weights available to run on own hardware: yes or no | Requirement 3 |
 | C7 | Input type | R4 | Works with video from one handheld or wearable camera | Requirement 4 |
 
 ## 3. SQ2: Approaches and their limitations
-*Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?*
+**Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?**
 
 ### 3.1 Concepts and definitions
 
@@ -255,7 +255,7 @@ Results to report:
 - Detection precision, recall and F1 (C4).
 - Count error for the room (R1).
 - Position error per fire extinguisher in cm (R2).
-- Processing time per step (C5).
+- Processing time and peak GPU memory per step (C5).
 
 Later experiment: check whether small assets remain detectable in 360° footage. A 360° camera covers a room in one pass but spreads its resolution over the full view.
 
