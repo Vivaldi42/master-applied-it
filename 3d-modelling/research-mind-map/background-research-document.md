@@ -102,17 +102,27 @@ The requirements originate from interviews with the Heijmans stakeholders. The i
 
 ### 3.1 Concepts and definitions
 
-[TODO] Check if these section is still valuable and isn't redundant
+The table defines the terms used in this document. The method families are described in Section 3.4.
 
-- Building maintenance: asset, inventory inspection, BIM (IFC), Level of Detail (LoD), COBie (optional: what an asset list should contain).
-- Localisation: camera pose, SLAM, drift, loop closure, sensor fusion (e.g., camera and IMU).
-- Geometry reconstruction: depth, scale ambiguity of a single camera, 3D representations (point cloud, mesh, Gaussian splats).
-- Semantic identification: semantic segmentation, object detection, semantic mapping.
-- Building information modelling: scan-to-BIM, as-built (as-is) model.
-- 3D world models:
-    - (a) a measured 3D model of the building (the goal of this project).
-    - (b) learned or generative world models, which can be used as a means to reach (a).
-    - Measured vs. generated content: generated parts may look plausible without being correct, which matters for the accuracy requirement.
+| Group | Term | Definition |
+|---|---|------|
+| Maintenance | Asset | A fixed building component that is maintained, e.g. a fire extinguisher, a light or a ventilation unit. |
+| Maintenance | Inventory inspection | An on-site survey in which an inspector records every asset and its condition. |
+| Maintenance | BIM | Building Information Model: a shared digital representation of the physical and functional characteristics of a building [1, Sec. 2]. It consists of objects that represent building components and hold geometric and non-geometric attributes [1, Sec. 2]. |
+| Maintenance | Scan-to-BIM | The process of capturing an existing building with scan data and creating a BIM model from it [11, Sec. 1]. |
+| Geometry | Camera pose | The position and orientation of the camera at the moment an image is taken. |
+| Geometry | Depth | The distance from the camera to a point in the scene. |
+| Geometry | Scale ambiguity | A single camera cannot determine real-world size from images alone. A reconstruction is correct up to an unknown scale factor until a known distance is added. |
+| Geometry | Point cloud | A set of points, each with x, y and z coordinates and in some cases additional attributes such as colour, that represents the 3D shape of the captured environment [3, Sec. 2.2.1], [11, Sec. 3]. |
+| Geometry | Mesh | A surface made of connected triangles. |
+| Localisation | Drift | The error in the estimated camera pose that accumulates over time when each pose is estimated relative to the previous one. |
+| Localisation | Loop closure | Recognising a previously visited place and using it to correct the accumulated drift. |
+| Localisation | IMU | Inertial Measurement Unit: a sensor that measures acceleration (accelerometer) and rotation (gyroscope). |
+| Semantics | Object detection | Finding objects in an image and returning a class label and a bounding box for each. |
+| Semantics | Segmentation mask | A per-pixel label that marks exactly which pixels of an image belong to an object. |
+| Semantics | Closed-set detector | A detector that works only for the classes it was trained or fine-tuned on [64, Sec. 1]. |
+| Semantics | Open-vocabulary detector | A detector that can identify objects not seen during training [64, Sec. 1]. The object classes are given as a text prompt. |
+| Semantics | Fine-tuning | Further training of a pretrained model on a smaller, task-specific dataset. |
 
 ### 3.2 Reconstruction pipeline
 The pipeline combines the scan-to-BIM framework [11, Sec. 1] with the stages of image-based reconstruction [9, Sec. 7]. The scan-to-BIM framework assumes a laser scanner, which delivers a point cloud directly. With a camera, the point cloud is computed from the video (stage 2).
