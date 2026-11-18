@@ -7,25 +7,25 @@
     - 1.3 Goal
     - 1.4 Research gap
     - 1.5 Research questions
-2. SQ1: Requirements and metrics
-    - 2.1 Requirements
-    - 2.2 Evaluation criteria
-3. SQ2: Approaches and their limitations
-    - 3.1 Concepts and definitions
-    - 3.2 Reconstruction pipeline
-    - 3.3 Capture devices (stage 1)
-    - 3.4 Method families per pipeline stage
-    - 3.5 Comparison of methods
-        - 3.5.1 Reconstruction (stage 2)
-        - 3.5.2 Asset detection (stage 3)
-    - 3.6 Reported results and limitations
-4. Recommendations for SQ3 and SQ4
-    - 4.1 Methods to test
-        - 4.1.1 Reconstruction (stage 2)
-        - 4.1.2 Asset detection (stage 3)
-    - 4.2 First experiment
-    - 4.3 Available hardware for testing
-5. Research process
+2. Research process
+3. SQ1: Requirements and metrics
+    - 3.1 Requirements
+    - 3.2 Evaluation criteria
+4. SQ2: Approaches and their limitations
+    - 4.1 Concepts and definitions
+    - 4.2 Reconstruction pipeline
+    - 4.3 Capture devices (stage 1)
+    - 4.4 Method families per pipeline stage
+    - 4.5 Comparison of methods
+        - 4.5.1 Reconstruction (stage 2)
+        - 4.5.2 Asset detection (stage 3)
+    - 4.6 Reported results and limitations
+5. Recommendations for SQ3 and SQ4
+    - 5.1 Methods to test
+        - 5.1.1 Reconstruction (stage 2)
+        - 5.1.2 Asset detection (stage 3)
+    - 5.2 First experiment
+    - 5.3 Available hardware for testing
 6. Conclusion
 7. References
 
@@ -53,7 +53,7 @@
 - The 3D model is both a deliverable and a processing step.
 - As a deliverable:
     - Maintenance requires the exact location of components [1, Sec. 1]. The model provides asset positions and room dimensions in real-world units (e.g., to check whether furniture fits in a room). The stakeholders accept a deviation of 10 to 15 cm for this purpose.
-    - Current mitigations such as AR depend on a BIM model (Section 1.2). The stakeholders expect the 3D model to provide a spatial base for such applications and for creating a BIM model (stage 4, Section 3.2).
+    - Current mitigations such as AR depend on a BIM model (Section 1.2). The stakeholders expect the 3D model to provide a spatial base for such applications and for creating a BIM model (stage 4, Section 4.2).
     - Unlike annotated 2D floor plans (Section 1.2), the model also records height. Height separates assets that share the same floor position (e.g., a ceiling smoke detector above a wall-mounted fire extinguisher).
 - As a processing step:
     - The model provides the room boundaries to assign each asset to a room.
@@ -72,10 +72,22 @@
     - SQ3. **Developing a solution**: How can these approaches be combined into a solution that identifies assets and associates them with reliable spatial locations?
     - SQ4. **Evaluating the solution**: How effectively does the resulting solution meet the requirements under representative building conditions?
 
-## 2. SQ1: Requirements and metrics
+## 2. Research process
+The research questions are answered with the following ICT research methods from the DOT framework [5]:
+
+| Method | DOT strategy | Activity |
+|---|---|---------|
+| Expert interview | Library | Heijmans stakeholders were interviewed about the maintenance process and its problems. An interview was conducted also with a maintenance expert. Fontys ICT Game Design and Video Production experts were interviewed about 3D reconstruction of physical spaces used for gaming and video production. |
+| Literature study | Library | Review papers on BIM for existing buildings, scan-to-BIM and condition assessment were studied to describe the domain and the research gap. Papers on reconstruction and asset detection methods, together with their code repositories and licences, were studied to derive the evaluation metrics (Section 3.2) and to compare the methods (Section 4). |
+| Available product analysis | Library | Existing reconstruction software and commercial capture products were reviewed for their output, licence, and hardware requirements. |
+| Problem analysis | Field | The interview results were documented in a problem analysis, which was discussed with and approved by the stakeholders. |
+
+Sections 3 and 4 report the results of these methods for SQ1 and SQ2. SQ3 and SQ4 are answered by experiments that follow this document, followed by the recommendations in Section 5.
+
+## 3. SQ1: Requirements and metrics
 **What requirements must a solution meet to support building inventory inspections, and which metrics measure them?**
 
-### 2.1 Requirements
+### 3.1 Requirements
 The requirements originate from interviews with the Heijmans stakeholders. The interview results are documented in a problem analysis, which the stakeholders approved.
 
 | # | Name | Requirement |
@@ -86,7 +98,7 @@ The requirements originate from interviews with the Heijmans stakeholders. The i
 | R4 | Input data | The input data is collected by a person who walks through the building with a handheld or wearable camera. A short video walkthrough per room is sufficient input, without manual recording of assets. |
 | R5 | Execution time | Processing is as fast as possible. |
 
-### 2.2 Evaluation criteria
+### 3.2 Evaluation criteria
 | # | Criterion | Requirement | Metric | Source |
 |---|---|---|---------|---|
 | C1 | Geometric accuracy | R2 | Precision: share of model points within a distance threshold of the reference | [9, Sec. 6] |
@@ -97,12 +109,12 @@ The requirements originate from interviews with the Heijmans stakeholders. The i
 | C6 | Runs locally | R3 | Code and model weights available to run on own hardware: yes or no | Requirement 3 |
 | C7 | Input type | R4 | Works with video from one handheld or wearable camera | Requirement 4 |
 
-## 3. SQ2: Approaches and their limitations
+## 4. SQ2: Approaches and their limitations
 **Which visual sensing, localisation and reconstruction approaches can contribute to meeting these requirements, and what are their limitations?**
 
-### 3.1 Concepts and definitions
+### 4.1 Concepts and definitions
 
-The table defines the terms used in this document. The method families are described in Section 3.4.
+The table defines the terms used in this document. The method families are described in Section 4.4.
 
 | Group | Term | Definition |
 |---|---|------|
@@ -124,7 +136,7 @@ The table defines the terms used in this document. The method families are descr
 | Semantics | Open-vocabulary detector | A detector that can identify objects not seen during training [64, Sec. 1]. The object classes are given as a text prompt. |
 | Semantics | Fine-tuning | Further training of a pretrained model on a smaller, task-specific dataset. |
 
-### 3.2 Reconstruction pipeline
+### 4.2 Reconstruction pipeline
 The pipeline combines the scan-to-BIM framework [11, Sec. 1] with the stages of image-based reconstruction [9, Sec. 7]. The scan-to-BIM framework assumes a laser scanner, which delivers a point cloud directly. With a camera, the point cloud is computed from the video (stage 2).
 
 | Stage | Output | Source |
@@ -134,10 +146,8 @@ The pipeline combines the scan-to-BIM framework [11, Sec. 1] with the stages of 
 | 3. Semantics | Detected and classified assets | [11, Sec. 1] |
 | 4. Asset list or BIM | Asset list or BIM model | [11, Sec. 1] |
 
-### 3.3 Capture devices (stage 1)
+### 4.3 Capture devices (stage 1)
 All devices output video. The Samsung Galaxy S25 is a personal device. Heijmans provides the Ray-Ban Meta glasses and the Insta360 X6. ISSD provides the DJI Osmo Pocket 3, the GoPro Fusion and the Ricoh Theta S. No source lists a depth sensor for any device. "Not listed" means that the source does not mention the property. "Unverified" means that no manufacturer document was found.
-
-[TODO] Check the table 
 
 | Device | Type | Motion data saved with the video | Data security (R3): transfer without Wi-Fi or cloud | Recording limit | Processing before reconstruction |
 |---|---|------|------| ------ | ------ |
@@ -148,7 +158,7 @@ All devices output video. The Samsung Galaxy S25 is a personal device. Heijmans 
 | GoPro Fusion | 360° camera | Yes. Accelerometer (200 Hz), gyroscope (3200 Hz) and magnetometer [15] | Yes. Two microSD cards (one per lens), card reader or USB cable [20] | Battery: about 75 minutes at 5.2K and 30 fps [23] (third party) | Stitching of the two files with GoPro Fusion Studio [20] |
 | Ricoh Theta S | 360° camera | Not listed [16] | Yes. Internal storage, USB cable to a computer [21] | 25 minutes per video [16] | Conversion with the RICOH THETA computer application [24] |
 
-### 3.4 Method families per pipeline stage
+### 4.4 Method families per pipeline stage
 
 | Stage | Family | Short description | Researched methods |
 |---|---|---|---|
@@ -162,10 +172,10 @@ All devices output video. The Samsung Galaxy S25 is a personal device. Heijmans 
 | 3. Semantics | 2D-to-3D lifting | Projects detections from many frames into the 3D model and merges them into one position per asset | Own projection and clustering baseline, OpenMask3D, Open-YOLO 3D |
 | 3. Semantics | Detection in 3D and structured room models | Recognises objects directly in the point cloud, or describes the room as walls, doors, windows and objects | SpatialLM, Mask3D |
 
-### 3.5 Comparison of methods
-The proposed methods are compared against the evaluation criteria described in Section 2.2. Scores (--, -, +, ++) are expected values from published results and documentation, not measurements. "?" means no source reports the property.
+### 4.5 Comparison of methods
+The proposed methods are compared against the evaluation criteria described in Section 3.2. Scores (--, -, +, ++) are expected values from published results and documentation, not measurements. "?" means no source reports the property.
 
-#### 3.5.1 Reconstruction (stage 2)
+#### 4.5.1 Reconstruction (stage 2)
 
 | Method | Family | C1 | C2 | C3 | C5 | C6 | C7 | Commercial use |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -188,9 +198,9 @@ The proposed methods are compared against the evaluation criteria described in S
 | Postshot [43] | Gaussian splatting | ? | ++ | ? | + | - | + | Paid |
 | Insta360 Spatial Capture [44] | Gaussian splatting | ? | + | ? | ++ | -- | - | Paid cloud service |
 
-The five reconstruction methods selected for testing are justified in Section 4.1.1.
+The five reconstruction methods selected for testing are justified in Section 5.1.1.
 
-#### 3.5.2 Asset detection (stage 3)
+#### 4.5.2 Asset detection (stage 3)
 
 "3D position": whether the method locates the asset in the room by itself.
 
@@ -210,21 +220,21 @@ The five reconstruction methods selected for testing are justified in Section 4.
 | SpatialLM [10] | Structured room model | - | + | ++ | + | Yes, with room layout | No (weights) |
 | Mask3D [58] | Detection in 3D | -- | + | ++ | - | Yes | Code yes, pretrained weights unclear |
 
-The five detection methods selected for testing are justified in Section 4.1.2.
+The five detection methods selected for testing are justified in Section 5.1.2.
 
-### 3.6 Reported results and limitations
+### 4.6 Reported results and limitations
 - **Reconstruction:** camera-based reconstruction is cheaper but less accurate than laser scanning [3, Sec. 2.2.2]. Photogrammetry breaks into disconnected parts and has difficulty with uniform surfaces and reflective materials [9, Sec. 8], and its accuracy degrades for large areas [11, Sec. 1].
 - **New reconstruction methods:** the indoor geometric accuracy of Gaussian splatting has not been measured [7, Sec. 1, Sec. 4.2], and an outdoor study found that it is not yet a mapping tool [8, Sec. 5]. No indoor accuracy study was found for the feed-forward models.
 - **Detection:** open-vocabulary detectors without fine-tuning failed on specialised building components (precision at most 0.02), while a fine-tuned detector reached 0.87 [64, Sec. 3]. On distinctive objects such as exit signs, an open-vocabulary detector found all instances [63, Sec. 6]. Small objects are detected less reliably than large ones [59, Sec. 4.1].
 - **3D position:** detected assets can be placed in a 3D model [60], [62]. A sign on a wall was located within about 4 cm, but signs on ceilings or windows deviated by metres because the detection box contained background [63, Sec. 6]. The closest comparable study reports localisation errors of 0.43 m and 0.62 m [61, Abstract], and structured room models score lower on point clouds reconstructed from video [10, App. C.3].
-- **Gaps:** no study tests these methods with video from a handheld or wearable camera in a finished building. This is why the selection in Section 4.1 must be tested.
+- **Gaps:** no study tests these methods with video from a handheld or wearable camera in a finished building. This is why the selection in Section 5.1 must be tested.
 
-## 4. Recommendations for SQ3 and SQ4
+## 5. Recommendations for SQ3 and SQ4
 
-### 4.1 Methods to test
+### 5.1 Methods to test
 Selection rule, in this order: (1) works with colour video and runs locally on one 24 GB GPU (C5, C6, C7), (2) commercial use allowed, (3) expected quality (C1 and C2, or C4), (4) different method families. The scores are expected values, so each selection is a hypothesis for the experiments.
 
-#### 4.1.1 Reconstruction (stage 2)
+#### 5.1.1 Reconstruction (stage 2)
 
 | Rank | Method | Role | Why selected | Main risk | What to test |
 |---|------|------|------|------|------|
@@ -236,7 +246,7 @@ Selection rule, in this order: (1) works with colour video and runs locally on o
 
 Runner-ups: DROID-SLAM [32], Depth Anything 3 [37].
 
-#### 4.1.2 Asset detection (stage 3)
+#### 5.1.2 Asset detection (stage 3)
 
 | Rank | Method | Role | Why selected | Main risk | What to test |
 |---|---|---|---|---|---|
@@ -248,15 +258,15 @@ Runner-ups: DROID-SLAM [32], Depth Anything 3 [37].
 
 Runner-ups: OWLv2 [48], Qwen2.5-VL [52] or Qwen3-VL [53]. If floor plans can assign assets to rooms, OWLv2 replaces rank 5.
 
-### 4.2 First experiment
-The first experiment narrows the selection of Section 4.1 down to one reconstruction method (rank 1) and one detection method (rank 1), tested in one room on one asset type. It establishes a baseline. The other selected methods are tested later, one at a time, against this baseline.
+### 5.2 First experiment
+The first experiment narrows the selection of Section 5.1 down to one reconstruction method (rank 1) and one detection method (rank 1), tested in one room on one asset type. It establishes a baseline. The other selected methods are tested later, one at a time, against this baseline.
 
 | Step | Choice | Justification |
 |---|------|------|
-| Capture | Samsung Galaxy S25, normal video, video stabilisation off (optical stabilisation of the lens stays active), one room | Standard video file that can be transferred without Wi-Fi or cloud (Section 3.3). Stabilisation shifts and crops the frames, which disturbs reconstruction |
-| Reconstruction | COLMAP [25] | Rank 1 in Section 4.1.1, the reference method. All later reconstruction methods are compared with it |
+| Capture | Samsung Galaxy S25, normal video, video stabilisation off (optical stabilisation of the lens stays active), one room | Standard video file that can be transferred without Wi-Fi or cloud (Section 4.3). Stabilisation shifts and crops the frames, which disturbs reconstruction |
+| Reconstruction | COLMAP [25] | Rank 1 in Section 5.1.1, the reference method. All later reconstruction methods are compared with it |
 | Scale | One distance measured with a tape measure | Simplest way to obtain real-world scale (R2) |
-| Detection | SAM 3 [45] with a text prompt. | Rank 1 in Section 4.1.2. Needs no training data. Tests whether open-vocabulary detection works for this asset type: it failed on specialised building components [64, Sec. 3] but worked on distinctive exit signs [63, Sec. 6]. If it fails, RF-DETR (rank 4) is tested next |
+| Detection | SAM 3 [45] with a text prompt. | Rank 1 in Section 5.1.2. Needs no training data. Tests whether open-vocabulary detection works for this asset type: it failed on specialised building components [64, Sec. 3] but worked on distinctive exit signs [63, Sec. 6]. If it fails, RF-DETR (rank 4) is tested next |
 | Asset type | Fire extinguishers | Easy to describe in a text prompt and easy to count by hand |
 | 3D position and count | Own projection and clustering step, using segmentation masks instead of boxes | Needed for R1 and R2. Boxes include background points, which caused position errors of several metres [63, Sec. 6] |
 | Reference | Hand count and tape measurements of each fire extinguisher | Ground truth for C1 and C4 |
@@ -269,7 +279,7 @@ Results to report:
 
 Later experiment: check whether small assets remain detectable in 360° footage. A 360° camera covers a room in one pass but spreads its resolution over the full view.
 
-### 4.3 Available hardware for testing
+### 5.3 Available hardware for testing
 
 | Component | Specification |
 |---|-----------|
@@ -281,24 +291,12 @@ Later experiment: check whether small assets remain detectable in 360° footage.
 
 Note: GPU memory does not combine across cards, so experiments should fit on one GPU.
 
-## 5. Research process
-This research uses the following ICT research methods from the DOT framework [5]:
+## 6. Conclusion
+SQ1: a solution must report the asset types and their count per room, locate assets within roughly 10 to 15 cm, process data on premise, accept video from a handheld or wearable camera and process it as fast as possible (Section 3.1). Seven criteria measure these requirements. Where possible, the metrics are taken from published benchmarks (Section 3.2).
 
-| Method | DOT strategy | Activity |
-|---|---|---------|
-| Expert interview | Library | Heijmans stakeholders were interviewed about the maintenance process and its problems. An interview was conducted also with a maintenance expert. Fontys ICT Game Design and Video Production experts were interviewed about 3D reconstruction of physical spaces used for gaming and video production. |
-| Literature study | Library | Review papers on BIM for existing buildings, scan-to-BIM, and condition assessment were studied to describe the domain and the research gap. |
-| Available product analysis | Library | Existing reconstruction software and commercial capture products were reviewed for their output, licence, and hardware requirements. |
-| Problem analysis | Field | The interview results were documented in a problem analysis, which was discussed with and approved by the stakeholders. |
-| Benchmark test | Showroom | [TODO] Selected methods are compared on the same captured data using the metrics from SQ1. |
-| Decomposition | Workshop | [TODO] The reconstruction process was decomposed into pipeline stages (capture, localisation, geometry, semantics, BIM) to compare methods per stage. |
-| Prototyping | Workshop | [TODO] A prototype was built to investigate what different algorithms can do using Samsung Galaxy S25 video. |
-| Requirements prioritization | Workshop | [TODO] |
+SQ2: the solution follows four stages: capture, reconstruction, semantics and asset list (Section 4.2). Eighteen reconstruction methods and thirteen detection methods from nine method families were compared (Sections 4.4 and 4.5). The literature shows four main limitations (Section 4.6). Camera-based reconstruction is less accurate than laser scanning and fails on uniform and reflective surfaces. The indoor accuracy of the newer reconstruction methods has not been measured. Open-vocabulary detectors fail on specialised building components, while fine-tuned detectors perform better. Placing 2D detections in a 3D model can cause errors of several metres. No study has tested these methods with video from a handheld or wearable camera in a finished building.
 
-## 6. Conclusion [TODO]
-- What is known: summary of the method families and their reported performance.
-- What is missing: the research gap.
-- how each SQ addresses the gap.
+Section 5 therefore selects five methods per stage and defines a first experiment: COLMAP and SAM 3 applied to fire extinguishers in one room. The scores in Section 4.5 are expected values based on the literature, not measurements. The experiments answer SQ3 and SQ4.
 
 ## 7. References
 [1] R. Volk, J. Stengel, and F. Schultmann, "Building information modeling (BIM) for existing buildings: Literature review and future needs," *Automation in Construction*, vol. 38, pp. 109-127, 2014, doi: 10.1016/j.autcon.2013.10.023.
@@ -348,8 +346,6 @@ This research uses the following ICT research methods from the DOT framework [5]
 [23] Digital Trends, "GoPro Fusion review." Accessed: Nov. 16, 2026. [Online]. Available: https://digitaltrends.com/photography/gopro-fusion-review
 
 [24] Ricoh, "RICOH THETA S user guide." Accessed: Nov. 16, 2026. [Online]. Available: https://theta-archive.ricoh360.com/support.theta360.com/en/manual/s/content/pc/pc_05
-
-[TODO] Check the references
 
 [25] J. L. Schönberger and J.-M. Frahm, "Structure-from-motion revisited," in *Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)*, 2016. [Online]. Available: https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Schonberger_Structure-From-Motion_Revisited_CVPR_2016_paper.pdf
 
