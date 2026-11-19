@@ -287,7 +287,6 @@ Later experiment: check whether small assets remain detectable in 360° footage.
 | CPU | AMD Ryzen 9 7950X, 16 cores, 32 threads |
 | RAM | Approximately 128 GB |
 | GPUs | Two NVIDIA RTX 4090, approximately 24 GB VRAM each |
-| Free storage | Approximately 42 GB on the project filesystem when checked |
 
 Note: GPU memory does not combine across cards, so experiments should fit on one GPU.
 
