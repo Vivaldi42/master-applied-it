@@ -15,3 +15,11 @@
 - Requirement for the 3D model: it must allow asset recognition later.
 - Next step: define the pipeline stages and the decision criteria for the method longlist.
 - Papers renamed to `author-year-short-description.pdf`. The filename equals the key in `papers/index.md`. All 9 papers are listed in the index.
+
+## 19-11-2026
+
+- The 3D reconstruction of my room using COLMAP PatchMatch stereo (the dense depth maps generation) took more than 2 h. Thus, I decided to focus on asset counts per room and per floor using SAM3 directly on video without doing experiments with COLMAP (or 3D reconstruction and modelling) for now. 
+- The first experiment tests whether SAM 3 alone (without a 3D model) can count the assets in the `room001` video.
+- First SAM 3 experiment: SAM 3 alone does not give correct counts on `room001`. It finds most assets but mostly over-counts them (duplicate IDs and false positives). GPU memory limits the video length.
+- Next step: classify the counting errors per prompt.
+- Details: `code/stages/detect/sam3.md`.

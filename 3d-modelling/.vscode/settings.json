@@ -1,0 +1,12 @@
+{
+  "files.watcherExclude": {
+    "**/data/**": true,
+    "**/runs/**": true
+  },
+  "search.exclude": {
+    "**/data/**": true,
+    "**/runs/**": true
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:conda",
+  "python-envs.defaultPackageManager": "ms-python.python:conda"
+}
