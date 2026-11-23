@@ -1,0 +1,4 @@
+# Raw data in backup folders: only ground-truth CSV files are tracked
+backup-*/data/**
+!backup-*/data/**/
+!backup-*/data/**/ground-truth.csv
