@@ -2,3 +2,6 @@
 backup-*/data/**
 !backup-*/data/**/
 !backup-*/data/**/ground-truth.csv
+
+# VS Code remote-video-preview extension cache
+.remote-video-preview-cache/
