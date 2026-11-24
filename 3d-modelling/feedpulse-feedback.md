@@ -65,3 +65,10 @@ Portfolio midterm review - Nico and Tom - 10.11.2026
 - Establish a reproducible evaluation method. Define datasets, reference measurements, accuracy metrics and test conditions before comparing approaches.
 - Demonstrate concrete software and hardware-interfacing evidence. Develop a limited working pipeline, document how sensor data is acquired and evaluate its performance. Build the end-to-end prototype (i.e., MVP) incl. 3D model generation and object recognition and then refine it iteratively. 
 - Connect technical results to professional value and transferability. Demonstrate whether the approach can support building inventory inspections and identify which findings may be useful in other buildings, devices or maintenance contexts.
+
+Feedback - Edwin - 20.11.2026
+- Methodology slide: datasets, ground truth, comparing, benchmarking
+- Is the 3D model better although it takes more compute resources?
+- Maybe tweak SAM 3 for your use case?
+- Check if you can run SAM 3 on more than one asset type at once.
+- Compare SAM 3 with Yolo, maybe you can post train Yolo on assets you are looking for.
