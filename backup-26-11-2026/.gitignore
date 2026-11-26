@@ -1,0 +1,12 @@
+papers/*.pdf
+
+# Raw data: only ground-truth CSV files are tracked
+data/**
+!data/**/
+!data/**/ground-truth.csv
+
+# Pipeline outputs
+runs/
+
+# Downloaded methods
+external/
