@@ -40,8 +40,8 @@ A positive error means too many objects, for example false detections or one obj
 
 | Room | Video | Asset types in the ground truth |
 |---|---|---|
-| room001 | Student room, 173 s | 10 |
-| room002 | Drying room and hallway in aex house, 86 s | 11 |
+| room001 | Student room, 173 s | 9 |
+| room002 | Drying room and hallway in a house, 86 s | 10 |
 
 ## 5. Methods
 
@@ -49,10 +49,9 @@ A positive error means too many objects, for example false detections or one obj
 |---|---|---|
 | 1. SAM 3 (`method-1-sam3.md`) | Text prompt per asset type, video tracking, count = number of IDs | Runs on both rooms. Counts are mostly too high. |
 
-Paused: 3D reconstruction with COLMAP (`code/stages/reconstruct/`), stopped on 19-11-2026 because it took more than 2 h for one room.
+Paused: 3D reconstruction with COLMAP (`code/methods/colmap.sh`), stopped on 19-11-2026 because it took more than 2 h for one room.
 
 ## 6. Open questions
 
 1. How can false detections be reduced (prompt, score limit, other detector)?
 2. How can duplicate IDs of one object be merged?
-3. Where are the room and the floor of a video stored, so that counts per floor are possible?
