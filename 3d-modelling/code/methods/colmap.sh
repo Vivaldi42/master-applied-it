@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Stage 2 (reconstruct): COLMAP sparse and dense reconstruction.
+# Paused method: COLMAP sparse and dense reconstruction.
 #
-# Usage:  code/stages/reconstruct/colmap.sh <run-dir>
+# Usage:  code/methods/colmap.sh <run-dir>
 # Input:  <run-dir>/frames/*.jpg
 # Output: <run-dir>/database.db, sparse/, dense/ (dense/fused.ply), *.log
 set -euo pipefail

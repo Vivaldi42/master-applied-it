@@ -1,43 +1,28 @@
-# Asset reconstruction pipeline
+# Code
 
-Experiment code for SQ3 and SQ4 of the background research document. The pipeline converts a video of a room into a 3D model and a list of detected assets with 3D positions.
+Design: `architecture/pipeline-design.md`. Method 1: `architecture/method-1-sam3.md`.
 
-## Folder layout
+## Layout
 
-| Path | Content | In git |
-|---|---|---|
-| `code/` | Pipeline and evaluation code | Yes |
-| `data/<room>/video.mp4` | Input video | No |
-| `data/<room>/ground-truth.csv` | Hand count and tape measurements | Yes |
-| `runs/<run-id>/` | All outputs of one pipeline run | No |
+| Path | Content |
+|---|---|
+| `run_pipeline.py` | Evaluation pipeline: frames, method, evaluation |
+| `methods/sam3_video.py` | Method 1: SAM 3 detection and tracking |
+| `methods/colmap.sh`, `colmap.md` | Paused method: 3D reconstruction with COLMAP |
 
-A run never overwrites an earlier run. Each run folder stores its settings, stage outputs, logs and metrics.
+## Run
 
-## Pipeline stages
+Each room folder contains `video.mp4`, `asset-types.csv` and `ground-truth.csv`.
 
-Each stage runs as a separate process in its own environment. Stages exchange data only through files in the run folder.
+```
+conda activate sam3
+cd /mnt/ssd/vladi/master-applied-it/3d-modelling
+python code/run_pipeline.py sam3 room002
+```
 
-| Stage | Input | Output | Method (experiment 1) | Environment |
-|---|---|---|---|---|
-| 1. Frames | `video.mp4` | `frames/*.jpg` | FFmpeg | System |
-| 2. Reconstruct | `frames/` | `sparse/`, `dense/` (COLMAP format) | COLMAP | Docker `colmap/colmap` |
-| 3. Scale | Model, one measured distance | Model in metres | Own script | TBD |
-| 4. Detect | `frames/` | `masks/` (PNG per frame) | SAM 3 | TBD |
-| 5. Localise | Model, `masks/` | `assets.csv` (position, count) | Own script | TBD |
-| 6. Evaluate | `assets.csv`, `ground-truth.csv` | `metrics.json` | Own script | TBD |
+The run folder `runs/exp<NNN>-<room>-<method>/` receives the next free number. It contains `inputs/` (copies of the asset types and the ground truth), `counts.csv`, `evaluation.csv`, `timing.csv` (time per step) and `run.log`. To test other asset types, add `--assets <file>`.
 
-## Run naming
+## Add a method
 
-Format: `exp<NNN>-<room>-<reconstruction method>-<detection method>`
-
-Example: `exp001-room001-colmap-sam3`
-
-Rules:
-1. `<NNN>` is a three-digit counter that increases by one for every new run, also when a run repeats earlier settings. The counter alone identifies a run.
-2. The other parts describe the input and methods. They do not identify the run.
-3. Method names use lowercase letters and digits only, for example `colmap`, `mapanything`, `sam3`, `gdinosam2`.
-4. A failed or aborted run keeps its number. The number is not reused.
-
-## How to run
-
-TBD
+1. Write a program that is called as `<program> <frames-dir> <asset-types.csv> <run-dir>` and writes `<run-dir>/counts.csv` with the columns `asset,count`.
+2. Add its command to `METHODS` in `run_pipeline.py`.
