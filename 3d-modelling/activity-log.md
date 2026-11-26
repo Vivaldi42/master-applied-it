@@ -23,3 +23,37 @@
 - First SAM 3 experiment: SAM 3 alone does not give correct counts on `room001`. It finds most assets but mostly over-counts them (duplicate IDs and false positives). GPU memory limits the video length.
 - Next step: classify the counting errors per prompt.
 - Details: `code/stages/detect/sam3.md`.
+
+## 23-11-2026
+
+- Wrote `architecture/system-architecture.md`. It describes the current pipeline, the decisions, the gaps between design and code and the open architecture decisions.
+- Decision: raw videos stay outside git on the SSD with a copy on the external disk. A per-room manifest is committed to git.
+- Decision: the MVP takes a room video and a given list of asset types as input and gives a CSV with `asset,count` as output. Heijmans needs only the asset types in its asset table.
+- Added the count stage (`code/stages/count/count.py`). It counts distinct track IDs per asset type and leaves the count empty if detection failed.
+
+## 24-11-2026
+
+- Added the evaluation stage (`code/stages/evaluate/evaluate.py`). It gives the signed count error per asset type. Both new stages reproduce the exp005 counts in `sam3.md`.
+- Added `code/run_mvp.sh`, which runs frames, detection, count and evaluation with one command.
+- Reduced `data/room001/ground-truth.csv` to monitor, radiator and door.
+- exp006 (first full MVP run): all 3 prompts failed with GPU out of memory. Services of another user hold about 8.2 GB on GPU 0 and SAM 3 needs 18 to 22 GB on the full video. Offloading to CPU memory is already enabled and does not solve it.
+- The exp004 log shows that GPU memory is released between prompts. The original reason for one process per prompt is therefore not supported.
+- Next step: decide how to get enough GPU memory (free GPU, smaller input or split video).
+
+## 25-11-2026
+
+- Correction to 24-11: offloading was not effective. SAM 3 copied all frames to the GPU (10.5 GB). Fixed in `sam3_detect.py`. In exp007 the peak for "monitor" fell from 21.1 to 10.6 GB with identical detections.
+- `run_sam3.sh` runs one prompt per GPU in parallel.
+- Shortened `system-architecture.md`. The details moved to `architecture-details.md`.
+- First working prototype: video and asset list in, final list out, with one manual check. "door" on room002 (exp011): SAM 3 found 9 objects. The check gave 2 correct, 2 duplicate and 5 wrong, so the final count is 2 (hand count 2).
+- Detection test on 43 single images (exp012, "door"): all 8 certain doors found, 15 wrong boxes at a score limit of 0.5 (verdicts by Claude, not checked).
+- Limitation: the check cannot add objects that SAM 3 missed, for example the expansion tank in exp010.
+- Next step: run all room002 assets and measure the time needed for the check.
+
+## 26-11-2026
+
+- Restructured the project into three levels: research question, evaluation pipeline and methods. Documents: `architecture/pipeline-design.md`, `architecture/method-1-sam3.md` and `architecture/decisions.md`. The manual check is no longer part of the pipeline: the method output is compared with the ground truth without corrections.
+- Replaced the stage scripts with one entry program, `python code/run_pipeline.py <method> <room>`. SAM 3 is method 1 in `code/methods/sam3_video.py`. Each room folder uses the file names `video.mp4`, `asset-types.csv` and `ground-truth.csv`. Each run records its inputs, git commit, time per step and peak GPU memory per asset type.
+- Ground truth changes: "cardboard box" and "potted plant" removed from room001 (no reliable hand count). Only fixed wall sockets count: room001 changed from 6 to 1 and "power socket" was renamed "wall socket" in both rooms.
+- Verification (exp016 room001, exp017 room002): all asset types that were not changed give detections identical to the earlier runs. Correct counts: 2 of 9 (room001) and 3 of 10 (room002), mostly too high. Run time 22.3 min and 12.9 min.
+- "wall socket" gave 5 instead of 3 in room002 and 2 instead of 3 in room001 (ground truth 3 and 1).
