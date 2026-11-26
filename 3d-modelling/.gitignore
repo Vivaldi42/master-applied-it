@@ -1,8 +1,9 @@
 papers/*.pdf
 
-# Raw data: only ground-truth CSV files are tracked
+# Raw data: only the asset types and ground-truth CSV files are tracked
 data/**
 !data/**/
+!data/**/asset-types.csv
 !data/**/ground-truth.csv
 
 # Pipeline outputs
@@ -10,3 +11,6 @@ runs/
 
 # Downloaded methods
 external/
+
+# Python cache
+__pycache__/
