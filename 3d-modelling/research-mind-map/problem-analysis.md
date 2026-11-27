@@ -44,6 +44,8 @@ The project has two deliverables with different accuracy requirements:
 
 Because the NEN 2767 assessment is visual (Section 1), a camera can in principle capture the information an inspector uses. In a later phase, a simplified classification of the asset conditions (e.g., good, intermediate or bad) may be developed.
 
+Objects to focus on: fire extinguisher, emergency exit, light, ventilation.
+
 ## 7. Long-term direction
 
 The long-term goal is a system that keeps the 3D model, the asset list and the asset conditions of a building up to date with minimal manual effort.
