@@ -43,6 +43,17 @@ A positive error means too many objects, for example false detections or one obj
 | room001 | Student room, 173 s | 9 |
 | room002 | Drying room and hallway in a house, 86 s | 10 |
 
+### 4.1 Recording guidelines (Samsung Galaxy S25)
+
+| Parameter | Setting | Reason |
+|---|---|---|
+| Camera | Main camera, zoom 1x | Used for room001 and room002. |
+| Resolution and frame rate | 3840 x 2160 (UHD), 30 fps | Same as room001 and room002, so that results remain comparable. The pipeline reduces the frames to 1920 px width and 10 fps. |
+| Orientation | Landscape | Both current videos are landscape. |
+| HDR video | Off | room001 and room002 are HDR (HLG) videos. The pipeline converts frames without HDR processing, so their colours can be pale. The effect on the results is not measured. |
+| Video stabilisation | Off | Off for room001. Not recorded for room002. |
+| Coverage | One video per room. Record each asset type that is in the ground truth. | The ground truth is counted by hand in the same video. |
+
 ## 5. Methods
 
 | Method | Approach | Status |
